@@ -1,8 +1,9 @@
 # AI Odyssey Product RoadMap
-- [ ]影像辨識遊戲功能
+- [ ]影像辨識遊戲DEMO
     - [X]仿造Teachable Machine
-    - [ ]遊戲劇情設計
     - [ ]遊戲對話系統
+    - [ ]遊戲劇情設計
+    - [ ]AI遊戲操作面板
 
 - [ ]portfolio成就系統
     - [ ]職涯發展

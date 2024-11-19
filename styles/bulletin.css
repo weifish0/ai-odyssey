@@ -1,0 +1,100 @@
+#bulletinBoard {
+	position: fixed;
+	top: 0;
+	right: -50%; /* 初始隱藏在視窗右側 */
+	width: 25%;
+	height: 60vh;
+	background: linear-gradient(135deg, var(--light-beige), var(--tan-brown));
+	transition: right 0.4s ease; /* 使用 right 屬性進行展開/收起動畫 */
+	box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
+	z-index: 100; /* 保持在畫布上方 */
+}
+
+#bulletinBoard.active {
+	right: 0; /* 展開時將 right 設為 0 */
+}
+
+#toggleBulletinIcon {
+	position: fixed;
+	top: 20px;
+	left: 20px; /* 固定在螢幕左側 */
+	width: 40px; /* 調整圖標的大小 */
+	height: 40px;
+	cursor: pointer;
+	z-index: 101; /* 保持在 bulletinBoard 之上 */
+}
+
+#toggleBulletinIcon:hover {
+	opacity: 0.8; /* 增加 hover 效果 */
+}
+
+#userProfile {
+	display: flex;
+	align-items: center; /* 垂直居中 */
+	text-align: left;
+	margin: 10px;
+}
+
+#userAvatar {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	margin-right: 15px; /* 與文字區域的距離 */
+	margin-bottom: 15px;
+}
+
+#userInfo {
+	display: flex;
+	flex-direction: column; /* 垂直排列名稱和經驗值 */
+}
+
+#userInfo h2 {
+	margin: 0;
+	font-size: 18px;
+}
+
+#userInfo p {
+	margin: 5px 0 0;
+	font-size: 14px;
+	color: #666;
+}
+
+/* 聊天框 */
+#chatBox {
+	background-color: #ffffff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 10px;
+}
+
+#chatBox h3 {
+	margin-top: 0;
+}
+
+#chatHistory {
+	height: 60vh;
+	overflow-y: auto;
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+	padding: 10px;
+	border-radius: 4px;
+	background-color: #fafafa;
+}
+
+#userInput {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+#aiAvatar {
+	width: 40px; /* 根據需要調整頭像大小 */
+	height: 40px;
+	border-radius: 50%; /* 將圖片設置為圓形 */
+	margin-right: 8px; /* 控制與標題的距離 */
+	display: block;
+	margin-bottom: 5px;
+}

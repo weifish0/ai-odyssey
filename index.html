@@ -1,11 +1,25 @@
+<html>
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/conversation.css">
+  <link rel="stylesheet" href="styles/bulletin.css">
+  <link rel="stylesheet" href="styles/gamepad.css">
+  <link rel="icon" href="/other/favicon.ico" type="image/x-icon">
 </head>
 
-<html>
+<body>
 <canvas></canvas>
+<div class="control-buttons">
+  <button id="upBtn" class="control-btn up">▲</button>
+  <div class="left-right-btns">
+      <button id="leftBtn" class="control-btn left">◀</button>
+      <button id="downBtn" class="control-btn down">▼</button>
+      <button id="rightBtn" class="control-btn right">▶</button>
+  </div>
+</div>
+
 <!-- 添加一個按鈕來控制 bulletinBoard 的展開和收起 -->
 <img src="./img/mainpage/toggle-icon.png" alt="Toggle Bulletin Board" id="toggleBulletinIcon">
 <div id="bulletinBoard">
@@ -28,6 +42,10 @@
 </div>
 
 <div id="npcImageContainer">
+  <div id="npcInfo">
+    <span id="npcName">角色名字</span>
+    <span id="npcDescription">角色敘述</span>
+  </div>
   <img src="" alt="NPC Image" id="npcImage">
 </div>
 <div id="characterDialogueBox"></div>
@@ -68,9 +86,11 @@
   <script src="data/attacks.js"></script>
   <script src="data/monsters.js"></script>
   <script src="data/characters.js"></script>
+  <script src="data/setting.js"></script>
+  <script src="data/map.js"></script>
   <script src="js/utils.js"></script>
   <script src="classes.js"></script>
   <script src="index.js"></script>
   <script src="battleScene.js"></script>
-
+</body>
 </html>

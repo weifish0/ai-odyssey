@@ -248,6 +248,8 @@ class Character extends Sprite {
     velocity,
     image,
     style_image = '',
+    name = '不知名的小人物',
+    description = '散發出神秘的氣期',
     frames = { max: 1, hold: 10 },
     sprites,
     animate = false,
@@ -266,6 +268,8 @@ class Character extends Sprite {
       scale
     })
     this.style_image = style_image
+    this.name = name
+    this.description = description
     this.dialogue = dialogue
     this.dialogueIndex = 0
   }

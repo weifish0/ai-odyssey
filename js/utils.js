@@ -34,3 +34,85 @@ function checkForCharacterCollision({
     }
   }
 }
+
+function hideControlsIfComputer() {
+  const isComputer = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const controlsContainer = document.querySelector('.control-buttons');
+  
+  if (isComputer) {
+    controlsContainer.style.display = 'none';
+  } else {
+    controlsContainer.style.display = 'flex';
+  }
+}
+
+// 定義按鈕的事件監聽函式
+function setupButtonListeners() {
+  // 向上按鈕
+  document.getElementById('upBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault(); // 防止點擊時畫面滑動
+    keys.w.pressed = true;
+    lastKey = 'w';
+  });
+  document.getElementById('upBtn').addEventListener('touchend', () => {
+    keys.w.pressed = false;
+  });
+
+  // 向左按鈕
+  document.getElementById('leftBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault(); // 防止點擊時畫面滑動
+    keys.a.pressed = true;
+    lastKey = 'a';
+  });
+  document.getElementById('leftBtn').addEventListener('touchend', () => {
+    keys.a.pressed = false;
+  });
+
+  // 向下按鈕
+  document.getElementById('downBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault(); // 防止點擊時畫面滑動
+    keys.s.pressed = true;
+    lastKey = 's';
+  });
+  document.getElementById('downBtn').addEventListener('touchend', () => {
+    keys.s.pressed = false;
+  });
+
+  // 向右按鈕
+  document.getElementById('rightBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault(); // 防止點擊時畫面滑動
+    keys.d.pressed = true;
+    lastKey = 'd';
+  });
+  document.getElementById('rightBtn').addEventListener('touchend', () => {
+    keys.d.pressed = false;
+  });
+}
+
+// 設置 canvas 的初始比例為 16:9，並根據螢幕寬度自動調整
+function resizeCanvas() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const aspectRatio = 16 / 9;
+
+  if (width / height > aspectRatio) {
+    // 螢幕過寬時，以高度為基準
+    canvas.height = height;
+    canvas.width = height * aspectRatio;
+  } else {
+    // 螢幕過高時，以寬度為基準
+    canvas.width = width;
+    canvas.height = width / aspectRatio;
+  }
+
+  // 重繪畫布（如果需要）
+  drawScene();
+}
+
+// 繪製場景的函式（僅示範，請根據實際場景更新）
+function drawScene() {
+  // 清除畫布
+  c.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 在這裡加入場景繪製程式碼
+}

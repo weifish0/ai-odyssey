@@ -1,0 +1,52 @@
+#npcImageContainer {
+	position: absolute;
+	display: none;
+	bottom: calc(100vh - 700px); /* 調整位置，使其在對話框上方 */
+	left: 10%;
+	width: 200px; /* 設置圖片大小 */
+	align-items: center;
+	gap: 15px; /* 圖片和文字的間距 */
+}
+
+#npcImage {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+#npcInfo {
+	background-color: #d2b48c; /* 淺棕色背景 */
+	padding: 10px; /* 內邊距 */
+	border-radius: 8px; /* 圓角 */
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 1vh;
+}
+
+#npcName {
+	font-size: 24px; /* 名字字體大小 */
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 4px; /* 與職稱間距 */
+}
+
+#npcDescription {
+	font-size: 16px; /* 職稱字體大小 */
+	color: #555; /* 比較深的淺棕色文字 */
+}
+
+#characterDialogueBox {
+	background-color: var(--tan-brown);
+	height: calc(100vh - 576px);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-top: 4px black solid;
+	display: none;
+	padding: 3vh;
+	z-index: 1;
+	font-size: 16px;
+	font-size: 24px;
+}
