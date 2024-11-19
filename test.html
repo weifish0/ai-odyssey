@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>image_recognition</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/test.css">
+  </head>  
+  <body>
+    <h1>來訓練你自己的影像辨識模型吧！ （在 遷移學習 和 MobileNet v3 預訓練模型的幫助下</h1>
+    
+    <p id="status">等待 AI 預模型載入...</p>
+    
+    <video id="webcam" autoplay muted></video>
+    
+    <button id="enableCam">啟用攝影機</button>
+    <button class="dataCollector" data-1hot="0" data-name="Class 1">蒐集資料1</button>
+    <button class="dataCollector" data-1hot="1" data-name="Class 2">蒐集資料2</button>
+    <button id="train">開始訓練!</button>
+    <button id="reset">重置</button>
+
+    <!-- Import TensorFlow.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js" type="text/javascript"></script>
+
+    <!-- Import the page's JavaScript to do some stuff -->
+    <script type="module" src="/image_recognition.js"></script>
+  </body>
+</html>
