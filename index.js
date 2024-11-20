@@ -1,3 +1,9 @@
+// 呼叫函式來設置按鈕監聽器
+setupButtonListeners();
+
+// 隱藏平板操作用移動按鈕
+hideControlsIfComputer();
+
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
@@ -372,13 +378,6 @@ function animate() {
   }
 }
 
-
-// 呼叫函式來設置按鈕監聽器
-setupButtonListeners();
-
-// 隱藏平板操作用移動按鈕
-hideControlsIfComputer();
-
 let lastKey = ''
 window.addEventListener('keydown', (e) => {
   // 檢查是否正在輸入文字，如果是則不處理移動事件
@@ -395,12 +394,13 @@ window.addEventListener('keydown', (e) => {
             player.interactionAsset.dialogue[dialogueIndex]
           return
         }
-
         // finish conversation
         player.isInteracting = false
         player.interactionAsset.dialogueIndex = 0
         document.querySelector('#characterDialogueBox').style.display = 'none'
         document.querySelector('#npcImageContainer').style.display = 'none';
+        document.getElementById('aiPanelContainer').style.display = 'none'; // 顯示懸浮窗
+        exit_image_recognition()
         break
     }
     return
@@ -414,11 +414,11 @@ window.addEventListener('keydown', (e) => {
       document.querySelector('#characterDialogueBox').innerHTML = firstMessage
       document.querySelector('#characterDialogueBox').style.display = 'flex'
       player.isInteracting = true
-
       document.querySelector('#npcImageContainer').style.display = 'block'
       document.querySelector('#npcImage').src = player.interactionAsset.style_image
       document.getElementById('npcName').textContent = player.interactionAsset.name;
       document.getElementById('npcDescription').textContent = player.interactionAsset.description;
+      document.getElementById('aiPanelContainer').style.display = 'block'; // 顯示懸浮窗
       break
     case 'w':
       keys.w.pressed = true
