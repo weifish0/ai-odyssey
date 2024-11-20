@@ -7,7 +7,7 @@ oldManImg.src = './img/oldMan/Idle.png'
 const characters_data = {
   villager1: (position)=>({
     image: villagerImg,
-    style_image: '/img/villager/villager_style.png',
+    style_image: './img/villager/villager_style.png',
     name: '阿勇',
     description: '對AI十分有興趣的年輕人',
     AI_panel_index: 3,
@@ -36,7 +36,7 @@ const characters_data = {
     },
     name: '村長',
     description: '負責村莊的大小事務',
-    style_image: '/img/oldMan/oldman.png',
+    style_image: './img/oldMan/oldman.png',
     position,
     scale: 3,
     dialogue: [
