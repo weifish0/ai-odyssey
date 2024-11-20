@@ -153,6 +153,7 @@ function reset() {
 	);
 }
 
+
 let dataCollectorButtons = document.querySelectorAll("button.dataCollector");
 for (let i = 0; i < dataCollectorButtons.length; i++) {
 	dataCollectorButtons[i].addEventListener("mousedown", gatherDataForClass);
@@ -160,6 +161,7 @@ for (let i = 0; i < dataCollectorButtons.length; i++) {
 	// Populate the human readable names for classes.
 	CLASS_NAMES.push(dataCollectorButtons[i].getAttribute("data-name"));
 }
+
 
 function gatherDataForClass() {
 	let classNumber = parseInt(this.getAttribute("data-1hot"));

@@ -33,8 +33,18 @@ body {
   background-color: rgb(0, 0, 0);
 }
 
+button {
+	width: 100%;
+	padding: 8px;
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
 button:hover {
-  background-color: #ddd;
+	background-color: #45a049;
 }
 
 /* canvas 和 bulletin 佈局 */

@@ -1,8 +1,7 @@
-// 呼叫函式來設置按鈕監聽器
-setupButtonListeners();
+let isComputer = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-// 隱藏平板操作用移動按鈕
-hideControlsIfComputer();
+// 操作搖桿
+setupGamePadListeners(isComputer);
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');

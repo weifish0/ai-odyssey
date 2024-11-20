@@ -35,19 +35,15 @@ function checkForCharacterCollision({
   }
 }
 
-function hideControlsIfComputer() {
-  const isComputer = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  const controlsContainer = document.querySelector('.control-buttons');
-  
-  if (isComputer) {
-    controlsContainer.style.display = 'none';
-  } else {
-    controlsContainer.style.display = 'flex';
-  }
-}
 
 // 定義按鈕的事件監聽函式
-function setupButtonListeners() {
+function setupGamePadListeners(isComputer) {
+  if(isComputer){return}
+  else{
+    const controlsContainer = document.querySelector('.control-buttons');
+    controlsContainer.style.display = 'flex';
+  }
+
   // 向上按鈕
   document.getElementById('upBtn').addEventListener('touchstart', (e) => {
     e.preventDefault(); // 防止點擊時畫面滑動
