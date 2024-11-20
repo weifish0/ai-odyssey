@@ -10,6 +10,7 @@ const characters_data = {
     style_image: '/img/villager/villager_style.png',
     name: '阿勇',
     description: '對AI十分有興趣的年輕人',
+    AI_panel_index: 3,
     position,
     frames: {
       max: 4,

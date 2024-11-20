@@ -387,8 +387,12 @@ window.addEventListener('keydown', (e) => {
     switch (e.key) {
       case ' ':
         player.interactionAsset.dialogueIndex++
-
         const { dialogueIndex, dialogue } = player.interactionAsset
+
+        if(dialogueIndex===player.interactionAsset.AI_panel_index){
+          start_AI_panel()
+        }
+        
         if (dialogueIndex <= dialogue.length - 1) {
           document.querySelector('#characterDialogueBox').innerHTML =
             player.interactionAsset.dialogue[dialogueIndex]
@@ -397,10 +401,7 @@ window.addEventListener('keydown', (e) => {
         // finish conversation
         player.isInteracting = false
         player.interactionAsset.dialogueIndex = 0
-        document.querySelector('#characterDialogueBox').style.display = 'none'
-        document.querySelector('#npcImageContainer').style.display = 'none';
-        document.getElementById('aiPanelContainer').style.display = 'none'; // 顯示懸浮窗
-        exit_image_recognition()
+        exit_conversation()
         break
     }
     return
@@ -414,11 +415,8 @@ window.addEventListener('keydown', (e) => {
       document.querySelector('#characterDialogueBox').innerHTML = firstMessage
       document.querySelector('#characterDialogueBox').style.display = 'flex'
       player.isInteracting = true
-      document.querySelector('#npcImageContainer').style.display = 'block'
-      document.querySelector('#npcImage').src = player.interactionAsset.style_image
-      document.getElementById('npcName').textContent = player.interactionAsset.name;
-      document.getElementById('npcDescription').textContent = player.interactionAsset.description;
-      document.getElementById('aiPanelContainer').style.display = 'block'; // 顯示懸浮窗
+
+      start_conversation(player.interactionAsset)
       break
     case 'w':
       keys.w.pressed = true
@@ -467,10 +465,3 @@ addEventListener('click', () => {
     clicked = true
   }
 })
-
-const toggleBulletinIcon = document.getElementById('toggleBulletinIcon');
-const bulletinBoard = document.getElementById('bulletinBoard');
-
-toggleBulletinIcon.addEventListener('click', () => {
-  bulletinBoard.classList.toggle('active');
-});

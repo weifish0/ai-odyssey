@@ -1,6 +1,6 @@
 #aiPanelContainer {
 	position: absolute;
-	top: 10%; /* 根據需要調整 */
+	top: 5%; /* 根據需要調整 */
 	left: 70%;
 	transform: translateX(-50%);
 	background: rgba(240, 240, 240, 0.9); /* 半透明背景 */
@@ -12,7 +12,7 @@
 }
 
 #webcam {
-    width: 70%; /* 設置為容器的 70% 寬度 */
+    width: 75%; /* 設置為容器的 70% 寬度 */
     aspect-ratio: 4 / 3; /* 設定 4:3 比例 */
     background: #000;
 }
