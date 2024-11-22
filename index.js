@@ -456,11 +456,19 @@ window.addEventListener('keyup', (e) => {
   }
 })
 
-let clicked = false
-addEventListener('click', () => {
-  if (!clicked) {
-    audio.Map.play()
-    console.log("game start")
-    clicked = true
-  }
-})
+const toggleMusicIcon = document.getElementById('toggleMusicIcon');
+let isMusicPlaying = false; // 用於追蹤音樂是否正在播放
+
+// 設定按鈕切換音樂播放狀態
+toggleMusicIcon.addEventListener('click', () => {
+	if (isMusicPlaying) {
+		// 停止音樂
+		audio.Map.pause();
+		toggleMusicIcon.src = './img/mainpage/playmusic-icon.png'; // 切換成播放圖示
+	} else {
+		// 播放音樂
+		audio.Map.play();
+		toggleMusicIcon.src = './img/mainpage/pause-button.png'; // 切換成暫停圖示
+	}
+	isMusicPlaying = !isMusicPlaying; // 切換狀態
+});
