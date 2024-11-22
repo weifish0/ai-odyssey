@@ -1,8 +1,10 @@
-function exit_conversation(){
+function exit_conversation(aiPanelType){
     document.querySelector('#characterDialogueBox').style.display = 'none'
     document.querySelector('#npcImageContainer').style.display = 'none'
     document.getElementById('aiPanelContainer').style.display = 'none'
-    exit_image_recognition()
+    if(aiPanelType === 1){
+        exit_image_recognition()
+    }
 }
 
 function start_conversation(Asset){
@@ -28,6 +30,7 @@ function start_AI_panel(aiPanelType) {
                         <button id="enableCam">啟用攝影機</button>
                         <button class="dataCollector" data-1hot="0" data-name="Class 1">蒐集資料1</button>
                         <button class="dataCollector" data-1hot="1" data-name="Class 2">蒐集資料2</button>
+                        <button class="dataCollector" data-1hot="2" data-name="Class 3">蒐集資料3</button>
                         <button id="train">開始訓練!</button>
                     </div>
                 </div>

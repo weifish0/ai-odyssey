@@ -376,7 +376,6 @@ function animate() {
       })
   }
 }
-
 let lastKey = ''
 window.addEventListener('keydown', (e) => {
   // 檢查是否正在輸入文字，如果是則不處理移動事件

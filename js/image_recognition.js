@@ -166,6 +166,10 @@ function init_dataCollectorButtons() {
 		// Populate the human readable names for classes.
 		CLASS_NAMES.push(dataCollectorButtons[i].getAttribute("data-name"));
 	}
+  // 監聽全域範圍的 mouseup
+	window.addEventListener("mouseup", () => {
+		gatherDataState = STOP_DATA_GATHER; // 停止蒐集資料
+	});
 }
 
 function gatherDataForClass() {
