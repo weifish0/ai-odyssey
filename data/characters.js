@@ -11,6 +11,7 @@ const characters_data = {
     name: '阿勇',
     description: '對AI十分有興趣的年輕人',
     AI_panel_index: 3,
+    AI_panel_type: 1,
     position,
     frames: {
       max: 4,

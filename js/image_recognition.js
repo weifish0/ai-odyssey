@@ -1,31 +1,10 @@
 // ref: https://codelabs.developers.google.com/tensorflowjs-transfer-learning-teachable-machine?authuser=0#0
-
-const STATUS = document.getElementById("aiStatus");
-const VIDEO = document.getElementById("webcam");
-const ENABLE_CAM_BUTTON = document.getElementById("enableCam");
-const LOAD_IMAGE_MODEL = document.getElementById("loadImageModel");
-const TRAIN_BUTTON = document.getElementById("train");
 const MOBILE_NET_INPUT_WIDTH = 224;
 const MOBILE_NET_INPUT_HEIGHT = 224;
 const STOP_DATA_GATHER = -1;
 const CLASS_NAMES = [];
 const COLOR_CHANNEL = 3; // RGB
 const EPOCHS_NUM = 10;
-
-ENABLE_CAM_BUTTON.addEventListener('click', (e) => {
-  toggleCam()
-  e.target.blur() // 移除焦點
-});
-
-TRAIN_BUTTON.addEventListener("click", (e) => {
-  trainAndPredict()
-  e.target.blur()
-});
-
-LOAD_IMAGE_MODEL.addEventListener("click", (e) => {
-  loadImageModel()
-  e.target.blur()
-});
 
 // camera
 let videoPlaying = false;
@@ -37,6 +16,32 @@ let trainingDataOutputs = [];
 let examplesCount = [];
 let predict = false;
 let model;
+
+function loadImageRecognition() {
+	STATUS = document.getElementById("aiStatus");
+	VIDEO = document.getElementById("webcam");
+	ENABLE_CAM_BUTTON = document.getElementById("enableCam");
+	LOAD_IMAGE_MODEL = document.getElementById("loadImageModel");
+	TRAIN_BUTTON = document.getElementById("train");
+
+
+	ENABLE_CAM_BUTTON.addEventListener("click", (e) => {
+		toggleCam();
+		e.target.blur(); // 移除焦點
+	});
+
+	TRAIN_BUTTON.addEventListener("click", (e) => {
+		trainAndPredict();
+		e.target.blur();
+	});
+
+	LOAD_IMAGE_MODEL.addEventListener("click", (e) => {
+		loadImageModel();
+		e.target.blur();
+	});
+
+  init_dataCollectorButtons()
+}
 
 function hasGetUserMedia() {
 	return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
@@ -64,7 +69,7 @@ function enableCam() {
 			VIDEO.addEventListener("loadeddata", function (e) {
 				videoPlaying = true;
 				ENABLE_CAM_BUTTON.innerText = "重置";
-        e.target.blur(); // 移除焦點
+				e.target.blur(); // 移除焦點
 			});
 		});
 	} else {
@@ -132,7 +137,7 @@ function predictLoop() {
 }
 
 function logProgress(epoch, logs) {
-  STATUS.innerText = `模型訓練中: ${epoch}/${EPOCHS_NUM}...`;
+	STATUS.innerText = `模型訓練中: ${epoch}/${EPOCHS_NUM}...`;
 	console.log("Data for epoch " + epoch, logs);
 }
 
@@ -146,22 +151,22 @@ function reset() {
 	}
 	trainingDataInputs.length = 0;
 	trainingDataOutputs.length = 0;
-	STATUS.innerText = `已清除快取 ${(before_memory - tf.memory().numBytes)/1000}KB 🧹`;
+	STATUS.innerText = `已清除快取 ${
+		(before_memory - tf.memory().numBytes) / 1000
+	}KB 🧹`;
 
-	console.log(
-		`Cleaned ${(before_memory - tf.memory().numBytes)/1000}KB`
-	);
+	console.log(`Cleaned ${(before_memory - tf.memory().numBytes) / 1000}KB`);
 }
 
-
-let dataCollectorButtons = document.querySelectorAll("button.dataCollector");
-for (let i = 0; i < dataCollectorButtons.length; i++) {
-	dataCollectorButtons[i].addEventListener("mousedown", gatherDataForClass);
-	dataCollectorButtons[i].addEventListener("mouseup", gatherDataForClass);
-	// Populate the human readable names for classes.
-	CLASS_NAMES.push(dataCollectorButtons[i].getAttribute("data-name"));
+function init_dataCollectorButtons() {
+	let dataCollectorButtons = document.querySelectorAll("button.dataCollector");
+	for (let i = 0; i < dataCollectorButtons.length; i++) {
+		dataCollectorButtons[i].addEventListener("mousedown", gatherDataForClass);
+		dataCollectorButtons[i].addEventListener("mouseup", gatherDataForClass);
+		// Populate the human readable names for classes.
+		CLASS_NAMES.push(dataCollectorButtons[i].getAttribute("data-name"));
+	}
 }
-
 
 function gatherDataForClass() {
 	let classNumber = parseInt(this.getAttribute("data-1hot"));
@@ -194,14 +199,12 @@ function dataGatherLoop() {
 
 		STATUS.innerText = "";
 		for (let n = 0; n < CLASS_NAMES.length; n++) {
-      if(examplesCount[n] === undefined){
-        STATUS.innerText +=
-				CLASS_NAMES[n] + " 資料數量: " + 0 + ".\n";
-      }
-      else{
-        STATUS.innerText +=
-				CLASS_NAMES[n] + " 資料數量: " + examplesCount[n] + ".\n";
-      }
+			if (examplesCount[n] === undefined) {
+				STATUS.innerText += CLASS_NAMES[n] + " 資料數量: " + 0 + ".\n";
+			} else {
+				STATUS.innerText +=
+					CLASS_NAMES[n] + " 資料數量: " + examplesCount[n] + ".\n";
+			}
 		}
 		window.requestAnimationFrame(dataGatherLoop);
 	}
@@ -230,7 +233,7 @@ async function loadMobileNetFeatureModel() {
 }
 
 function loadImageModel() {
-  STATUS.innerText = "等待 AI 預模型載入...";
+	STATUS.innerText = "等待 AI 預模型載入...";
 
 	// Call the function immediately to start loading.
 	loadMobileNetFeatureModel();
@@ -260,7 +263,7 @@ function loadImageModel() {
 	});
 }
 
-function exit_image_recognition(){
-  stopCamera()
-  STATUS.innerText = "載入預訓練模型，開啟你的AI影像辨識奇幻之旅吧⭐️"
+function exit_image_recognition() {
+	stopCamera();
+	STATUS.innerText = "載入預訓練模型，開啟你的AI影像辨識奇幻之旅吧⭐️";
 }

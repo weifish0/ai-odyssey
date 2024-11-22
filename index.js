@@ -389,7 +389,7 @@ window.addEventListener('keydown', (e) => {
         const { dialogueIndex, dialogue } = player.interactionAsset
 
         if(dialogueIndex===player.interactionAsset.AI_panel_index){
-          start_AI_panel()
+          start_AI_panel(player.interactionAsset.AI_panel_type)
         }
         
         if (dialogueIndex <= dialogue.length - 1) {

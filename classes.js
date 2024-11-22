@@ -251,6 +251,7 @@ class Character extends Sprite {
     name = '不知名的小人物',
     description = '散發出神秘的氣期',
     AI_panel_index = 1,
+    AI_panel_type = 0,
     frames = { max: 1, hold: 10 },
     sprites,
     animate = false,
@@ -270,6 +271,7 @@ class Character extends Sprite {
     })
     this.style_image = style_image
     this.AI_panel_index = AI_panel_index
+    this.AI_panel_type = AI_panel_type
     this.name = name
     this.description = description
     this.dialogue = dialogue
