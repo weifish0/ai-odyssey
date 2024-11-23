@@ -399,7 +399,7 @@ window.addEventListener('keydown', (e) => {
         // finish conversation
         player.isInteracting = false
         player.interactionAsset.dialogueIndex = 0
-        exit_conversation()
+        exit_conversation(player.interactionAsset.AI_panel_type)
         break
     }
     return

@@ -17,13 +17,23 @@ let examplesCount = [];
 let predict = false;
 let model;
 
+let STATUS;
+let VIDEO;
+let ENABLE_CAM_BUTTON;
+let LOAD_IMAGE_MODEL;
+let TRAIN_BUTTON;
+
+let dataCollectorContainer;
+let addInput;
+let addButton;
+let nextClassIndex = 0; // 從0開始計算 class 數量
+
 function loadImageRecognition() {
 	STATUS = document.getElementById("aiStatus");
 	VIDEO = document.getElementById("webcam");
 	ENABLE_CAM_BUTTON = document.getElementById("enableCam");
 	LOAD_IMAGE_MODEL = document.getElementById("loadImageModel");
 	TRAIN_BUTTON = document.getElementById("train");
-
 
 	ENABLE_CAM_BUTTON.addEventListener("click", (e) => {
 		toggleCam();
@@ -40,7 +50,49 @@ function loadImageRecognition() {
 		e.target.blur();
 	});
 
-  init_dataCollectorButtons()
+	dataCollectorContainer = document.getElementById("dataCollector-container");
+	addInput = document.getElementById("addInput");
+	addButton = document.getElementById("addButton");
+
+	// 監聽全域範圍的 mouseup
+	window.addEventListener("mouseup", () => {
+		gatherDataState = STOP_DATA_GATHER; // 停止蒐集資料
+	});
+	// init_dataCollectorButtons()
+	// nextClassIndex = document.querySelectorAll("button.dataCollector")
+	new_data_button();
+}
+
+function new_data_button() {
+	addButton.addEventListener("click", () => {
+		// 獲取輸入的資料名稱
+		const dataName = addInput.value.trim();
+		if (!dataName) {
+			alert("請輸入資料名稱！");
+			return;
+		}
+
+		// 創建新按鈕
+		const newButton = document.createElement("button");
+		newButton.classList.add("dataCollector");
+		newButton.setAttribute("data-1hot", nextClassIndex);
+		newButton.setAttribute("data-name", dataName);
+		newButton.textContent = `蒐集資料：${dataName}`;
+
+		// 將按鈕加入容器
+		dataCollectorContainer.appendChild(newButton);
+
+		// 更新 CLASS_NAMES 並添加事件監聽器
+		CLASS_NAMES.push(dataName);
+		newButton.addEventListener("mousedown", gatherDataForClass);
+		newButton.addEventListener("mouseup", gatherDataForClass);
+
+		// 清空輸入框
+		addInput.value = "";
+
+		// 更新索引
+		nextClassIndex++;
+	});
 }
 
 function hasGetUserMedia() {
@@ -156,20 +208,6 @@ function reset() {
 	}KB 🧹`;
 
 	console.log(`Cleaned ${(before_memory - tf.memory().numBytes) / 1000}KB`);
-}
-
-function init_dataCollectorButtons() {
-	let dataCollectorButtons = document.querySelectorAll("button.dataCollector");
-	for (let i = 0; i < dataCollectorButtons.length; i++) {
-		dataCollectorButtons[i].addEventListener("mousedown", gatherDataForClass);
-		dataCollectorButtons[i].addEventListener("mouseup", gatherDataForClass);
-		// Populate the human readable names for classes.
-		CLASS_NAMES.push(dataCollectorButtons[i].getAttribute("data-name"));
-	}
-  // 監聽全域範圍的 mouseup
-	window.addEventListener("mouseup", () => {
-		gatherDataState = STOP_DATA_GATHER; // 停止蒐集資料
-	});
 }
 
 function gatherDataForClass() {
