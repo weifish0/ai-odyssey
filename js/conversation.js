@@ -1,10 +1,39 @@
+document.getElementById("prevDialogue").addEventListener("click", () => {
+	if (player.interactionAsset.dialogueIndex > 0) {
+		player.interactionAsset.dialogueIndex--;
+		updateDialogue();
+	}
+});
 
+document.getElementById("nextDialogue").addEventListener("click", () => {
+	if (
+		player.interactionAsset.dialogueIndex <
+		player.interactionAsset.dialogue.length - 1
+	) {
+		player.interactionAsset.dialogueIndex++;
+		updateDialogue();
+	}
+});
+
+function updateDialogue() {
+	const dialogueContent = document.getElementById("dialogueContent");
+
+	const dialogue =
+		player.interactionAsset.dialogue[player.interactionAsset.dialogueIndex];
+	dialogueContent.textContent = dialogue;
+
+    if(player.interactionAsset.dialogueIndex===player.interactionAsset.AI_panel_index){
+        start_AI_panel(player.interactionAsset.AI_panel_type)
+      }else{
+        // 圖片展示
+        start_AI_panel(0)
+    }
+}
 
 function exit_conversation(aiPanelType) {
 	document.querySelector("#characterDialogueBox").style.display = "none";
 	document.querySelector("#npcImageContainer").style.display = "none";
 	document.getElementById("aiPanelContainer").style.display = "none";
-	console.log(aiPanelType);
 	if (aiPanelType === 1) {
 		exit_image_recognition();
 	}
@@ -25,15 +54,17 @@ function start_AI_panel(aiPanelType) {
 
 	switch (aiPanelType) {
 		case 0: //示意圖
-            console.log(player.interactionAsset.conversation_img_data)
-			const currentImage = player.interactionAsset.conversation_img_data[player.interactionAsset.dialogueIndex] || "";
+			const currentImage =
+				player.interactionAsset.conversation_img_data[
+					player.interactionAsset.dialogueIndex
+				] || "";
 			aiPanelContainer.innerHTML = `
         <div id="image-panel">
             <img src="${currentImage}" alt="示意圖" id="conversation-image">
             <p id="image-caption">示意圖</p>
         </div>
     `;
-    break;
+			break;
 
 		case 1: // 影像辨識
 			aiPanelContainer.innerHTML = `

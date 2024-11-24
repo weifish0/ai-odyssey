@@ -395,7 +395,7 @@ window.addEventListener('keydown', (e) => {
         }
         
         if (dialogueIndex <= dialogue.length - 1) {
-          document.querySelector('#characterDialogueBox').innerHTML =
+          document.querySelector('#dialogueContent').textContent =
             player.interactionAsset.dialogue[dialogueIndex]
           return
         }
@@ -413,12 +413,12 @@ window.addEventListener('keydown', (e) => {
 
       // beginning the conversation
       const firstMessage = player.interactionAsset.dialogue[0]
-      document.querySelector('#characterDialogueBox').innerHTML = firstMessage
+      document.querySelector('#dialogueContent').textContent = firstMessage
       document.querySelector('#characterDialogueBox').style.display = 'flex'
       player.isInteracting = true
 
       start_conversation(player.interactionAsset)
-      
+
       // 圖片展示
       start_AI_panel(0)
       break

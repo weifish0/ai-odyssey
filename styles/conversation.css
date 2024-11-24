@@ -49,4 +49,40 @@
 	z-index: 1;
 	font-size: 16px;
 	font-size: 24px;
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#dialogueContent {
+	flex: 1;
+	overflow-y: auto;
+}
+
+#dialogueControls {
+	position: absolute;
+	bottom: 3%;
+	right: 3%;
+	display: flex;
+	justify-content: space-between;
+	width: 30%; /* 按鈕區域寬度為 30% */
+}
+
+#prevDialogue,
+#nextDialogue {
+	background-color: var(--tan-brown);
+	color: black;
+	border: 2px solid black;
+	padding: 0.5em 1em;
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 5px;
+	flex: 1; /* 每個按鈕均分寬度 */
+	margin: 0 0.5em;
+}
+
+#prevDialogue:hover,
+#nextDialogue:hover {
+	background-color: black;
+	color: white;
 }
