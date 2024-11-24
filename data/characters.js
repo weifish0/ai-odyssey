@@ -29,7 +29,8 @@ const characters_data = {
     ],
     conversation_img_data: [
       './conversation_img_data/1.png',
-      './other/logo.png'
+      'https://www.youtube.com/embed/GNUdbs8MWcs',
+      './conversation_img_data/1.png',
     ]
   }),
   oldman: (position)=>({

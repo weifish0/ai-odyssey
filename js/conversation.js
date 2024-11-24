@@ -3,7 +3,7 @@ document.getElementById("prevDialogue").addEventListener("click", (e) => {
 		player.interactionAsset.dialogueIndex--;
 		updateDialogue();
 	}
-    e.target.blur();
+	e.target.blur();
 });
 
 document.getElementById("nextDialogue").addEventListener("click", (e) => {
@@ -14,7 +14,7 @@ document.getElementById("nextDialogue").addEventListener("click", (e) => {
 		player.interactionAsset.dialogueIndex++;
 		updateDialogue();
 	}
-    e.target.blur();
+	e.target.blur();
 });
 
 function typeText(text, elementId) {
@@ -39,12 +39,15 @@ function updateDialogue() {
 		player.interactionAsset.dialogue[player.interactionAsset.dialogueIndex];
 	dialogueContent.textContent = dialogue;
 
-    if(player.interactionAsset.dialogueIndex===player.interactionAsset.AI_panel_index){
-        start_AI_panel(player.interactionAsset.AI_panel_type)
-      }else{
-        // 圖片展示
-        start_AI_panel(0)
-    }
+	if (
+		player.interactionAsset.dialogueIndex ===
+		player.interactionAsset.AI_panel_index
+	) {
+		start_AI_panel(player.interactionAsset.AI_panel_type);
+	} else {
+		// 圖片展示
+		start_AI_panel(0);
+	}
 }
 
 function exit_conversation(aiPanelType) {
@@ -74,13 +77,32 @@ function start_AI_panel(aiPanelType) {
 			const currentImage =
 				player.interactionAsset.conversation_img_data[
 					player.interactionAsset.dialogueIndex
-				] || "";
-			aiPanelContainer.innerHTML = `
-        <div id="image-panel">
-            <img src="${currentImage}" alt="示意圖" id="conversation-image">
-            <p id="image-caption">示意圖</p>
-        </div>
-    `;
+				] || "../other/poster.png";
+
+			if (currentImage.startsWith("https://")) {
+				// 如果是 YouTube 影片，刷新為 iframe
+				aiPanelContainer.innerHTML = `
+            <div id="video-panel">
+                <iframe 
+                    id="youtube-video" 
+                    src="${currentImage}" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <p id="video-caption">示意影片</p>
+            </div>
+        `;
+			} else {
+				// 否則顯示圖片
+				aiPanelContainer.innerHTML = `
+            <div id="image-panel">
+                <img src="${currentImage}" alt="示意圖" id="conversation-image">
+                <p id="image-caption">示意圖</p>
+            </div>
+        `;
+			}
 			break;
 
 		case 1: // 影像辨識
