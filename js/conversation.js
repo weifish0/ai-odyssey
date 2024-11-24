@@ -1,11 +1,12 @@
-document.getElementById("prevDialogue").addEventListener("click", () => {
+document.getElementById("prevDialogue").addEventListener("click", (e) => {
 	if (player.interactionAsset.dialogueIndex > 0) {
 		player.interactionAsset.dialogueIndex--;
 		updateDialogue();
 	}
+    e.target.blur();
 });
 
-document.getElementById("nextDialogue").addEventListener("click", () => {
+document.getElementById("nextDialogue").addEventListener("click", (e) => {
 	if (
 		player.interactionAsset.dialogueIndex <
 		player.interactionAsset.dialogue.length - 1
@@ -13,7 +14,23 @@ document.getElementById("nextDialogue").addEventListener("click", () => {
 		player.interactionAsset.dialogueIndex++;
 		updateDialogue();
 	}
+    e.target.blur();
 });
+
+function typeText(text, elementId) {
+	let i = 0;
+	const element = document.getElementById(elementId);
+	element.innerHTML = ""; // 清空之前的內容
+
+	const interval = setInterval(() => {
+		if (i < text.length) {
+			element.innerHTML += text.charAt(i); // 逐字顯示
+			i++;
+		} else {
+			clearInterval(interval); // 結束動畫
+		}
+	}, 50); // 每個字的間隔（毫秒）
+}
 
 function updateDialogue() {
 	const dialogueContent = document.getElementById("dialogueContent");

@@ -395,8 +395,7 @@ window.addEventListener('keydown', (e) => {
         }
         
         if (dialogueIndex <= dialogue.length - 1) {
-          document.querySelector('#dialogueContent').textContent =
-            player.interactionAsset.dialogue[dialogueIndex]
+          typeText(player.interactionAsset.dialogue[dialogueIndex], "dialogueContent")  
           return
         }
         // finish conversation
@@ -413,7 +412,7 @@ window.addEventListener('keydown', (e) => {
 
       // beginning the conversation
       const firstMessage = player.interactionAsset.dialogue[0]
-      document.querySelector('#dialogueContent').textContent = firstMessage
+      typeText(firstMessage, "dialogueContent")
       document.querySelector('#characterDialogueBox').style.display = 'flex'
       player.isInteracting = true
 
