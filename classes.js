@@ -251,6 +251,8 @@ class Character extends Sprite {
     name = '不知名的小人物',
     description = '散發出神秘的氣期',
     conversation_img_data = [],
+    CV_data_num,
+    CV_data_label,
     AI_panel_index = -1,
     AI_panel_type = 0,
     frames = { max: 1, hold: 10 },
@@ -270,6 +272,8 @@ class Character extends Sprite {
       rotation,
       scale
     })
+    this.CV_data_label = CV_data_label
+    this.CV_data_num = CV_data_num
     this.style_image = style_image
     this.AI_panel_index = AI_panel_index
     this.AI_panel_type = AI_panel_type

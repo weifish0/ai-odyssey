@@ -56,7 +56,12 @@ function exit_conversation(aiPanelType) {
 	document.getElementById("aiPanelContainer").style.display = "none";
 	if (aiPanelType === 1) {
 		exit_image_recognition();
+        CLASS_NAMES = [];
 	}
+    if(aiPanelType === 2){
+        CLASS_NAMES = [];
+        resetStaticImageRecognition();
+    }
 }
 
 function start_conversation(Asset) {
@@ -110,29 +115,41 @@ function start_AI_panel(aiPanelType) {
 <div id="recognition-panel">
 	<video id="webcam" autoplay muted></video>
 	<div id="dataCollector-container"></div>
+</div>
+<div id="recognition-controls">
 	<div id="addCollector-container">
 		<input type="text" id="addInput" placeholder="輸入資料名稱">
 		<button id="addButton">新增標籤</button>
 	</div>
-</div>
-<div id="recognition-controls">
-	<button id="loadImageModel">載入預訓練模型</button>
-	<button id="enableCam">啟用攝影機</button>
-	<button id="train">開始訓練!</button>
+	<div id="recognition-button-container">
+		<button id="loadImageModel">載入預訓練模型</button>
+		<button id="enableCam">啟用攝影機</button>
+		<button id="train">開始訓練!</button>
+	</div>
 </div>
 <p id="aiStatus">選擇標籤後，載入預訓練模型，開啟你的AI影像辨識奇幻之旅吧🧚‍♀️</p>
             `;
 			loadImageRecognition(); // 初始化影像辨識功能
 			break;
 
-		case 2: // 影像辨識自選圖片
+		case 2: // 影像辨識不用鏡頭自選圖片
 			aiPanelContainer.innerHTML = `
-                <div id="image-generation-panel">
-                    <textarea id="imagePrompt" placeholder="輸入圖像生成的提示..."></textarea>
-                    <button id="generateImage">生成圖像</button>
-                    <div id="imagePreview"></div>
-                </div>
+        <div id="local-image-panel">
+            <div id="imagePreviewContainer"></div>
+            <div id="classification-buttons">
+                <button id="labelClass1">${player.interactionAsset.CV_data_label[0]}</button>
+                <button id="labelClass2">${player.interactionAsset.CV_data_label[1]}</button>
+                <button id="resetImgLabel">重置</button>
+            </div>
+        </div>
+        <div id="recognition-controls">
+	        <button id="train" style="display: none;">訓練模型</button>
+	        <button id="nextVideoButton" style="display: none;">下一個</button>
+        </div>
+        <p id="aiStatus"></p>
+</div>
             `;
+			loadStaticImageRecognition(player.interactionAsset.CV_data_num);
 			break;
 
 		case 3: // 圖像生成

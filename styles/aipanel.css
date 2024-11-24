@@ -6,16 +6,20 @@
 	background: rgba(240, 240, 240, 0.9); /* 半透明背景 */
 	border: 2px solid #ddd;
 	padding: 10px;
-	width: 60vw;
+	max-width: 60vw;
+    min-width: 30vw;
 	z-index: 2;
 	display: none; /* 默認隱藏 */
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #webcam {
-	width: 75%; /* 設置為容器的 70% 寬度 */
 	aspect-ratio: 4 / 3; /* 設定 4:3 比例 */
-	background: #000;
+    flex: 1 1 auto; /* 允許視訊佔據剩餘空間，並保持彈性大小 */
+	max-width: 80%; /* 設置最大寬度，避免過大 */
+	height: auto; /* 確保比例正常 */
+	background-color: #000; /* 添加黑色背景 */
+	border: 2px solid #ccc; /* 添加邊框 */
 }
 
 #aiStatus {
@@ -27,15 +31,16 @@
 #recognition-panel {
 	display: flex;
 	flex-wrap: wrap; /* 適應不同螢幕大小 */
-	gap: 20px;
+    width: 35vw;
 	align-items: flex-start;
 }
 
 #dataCollector-container {
+	flex: 0 0 20%; /* 固定為 30% 寬度，保持水平排列 */
 	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	margin-top: 10px;
+	flex-direction: column; /* 按列排列按鈕 */
+	gap: 10px; /* 按鈕之間的間距 */
+	margin-top: 10px; /* 與 #webcam 保持距離 */
 }
 
 #addCollector-container {
@@ -59,8 +64,17 @@
 
 #recognition-controls {
 	display: flex;
-	justify-content: space-around;
+	flex-direction: column; /* 總體垂直排列 */
+	gap: 10px;
 	margin-top: 10px;
+}
+
+#recognition-button-container {
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 #recognition-controls button {
@@ -76,8 +90,8 @@
 }
 
 #conversation-image {
-	width: 100%; /* 圖片填滿容器 */
-	max-height: 50vh; /* 限制最大高度，避免超出視窗 */
+	width: 40vw; /* 圖片填滿容器 */
+    max-height: 50vh;
 	object-fit: contain; /* 保持圖片比例 */
 	border: 2px solid #ddd;
 	border-radius: 5px;
@@ -92,22 +106,82 @@
 }
 
 #video-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
 }
 
 #youtube-video {
-    width: 50vw; /* 視需要調整寬度 */
-    aspect-ratio: 16 / 9; /* 確保 16:9 比例 */
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	width: 50vw; /* 視需要調整寬度 */
+	aspect-ratio: 16 / 9; /* 確保 16:9 比例 */
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #video-caption {
-    font-size: 14px;
-    color: #666;
-    text-align: center;
+	font-size: 14px;
+	color: #666;
+	text-align: center;
+}
+
+#local-image-panel {
+    display: flex;
+    flex-direction: row; /* 橫向排列 */
+    align-items: flex-start; /* 頂端對齊 */
+    gap: 20px; /* 控制圖片與按鈕的間距 */
+}
+
+#imagePreviewContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagePreviewContainer img {
+    width: 30vw;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px; /* 圓角樣式，可選 */
+}
+
+#imagePreviewContainer video {
+    width: 50vw;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px; /* 圓角樣式，可選 */
+}
+
+#classification-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 按鈕間距 */
+}
+
+#classification-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f3b138;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* 防止文字換行 */
+}
+
+#classification-buttons button:hover {
+    background-color: #fb9519;
+}
+
+#trainModel {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#trainModel:hover {
+    background-color: #45a049;
 }

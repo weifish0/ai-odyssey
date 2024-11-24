@@ -2,9 +2,10 @@
 const MOBILE_NET_INPUT_WIDTH = 224;
 const MOBILE_NET_INPUT_HEIGHT = 224;
 const STOP_DATA_GATHER = -1;
-const CLASS_NAMES = [];
 const COLOR_CHANNEL = 3; // RGB
 const EPOCHS_NUM = 10;
+
+let CLASS_NAMES = [];
 
 // camera
 let videoPlaying = false;
@@ -28,6 +29,18 @@ let addInput;
 let addButton;
 let nextClassIndex = 0; // 從0開始計算 class 數量
 
+// static img recognition
+let currentImageIndex = 1;
+const totalImages = 10;
+let static_img;
+let imagePreviewContainer;
+let CV_folder_num;
+let class1Button;
+let class2Button;
+let resetImgLabel;
+let nextVideoButton;
+let currentVideoIndex = 0;
+
 function loadImageRecognition() {
 	STATUS = document.getElementById("aiStatus");
 	VIDEO = document.getElementById("webcam");
@@ -46,7 +59,7 @@ function loadImageRecognition() {
 	});
 
 	LOAD_IMAGE_MODEL.addEventListener("click", (e) => {
-		loadImageModel();
+		loadImageModel(CLASS_NAMES.length);
 		e.target.blur();
 	});
 
@@ -58,10 +71,137 @@ function loadImageRecognition() {
 	window.addEventListener("mouseup", () => {
 		gatherDataState = STOP_DATA_GATHER; // 停止蒐集資料
 	});
-	// init_dataCollectorButtons()
-	// nextClassIndex = document.querySelectorAll("button.dataCollector")
 	new_data_button();
 }
+
+
+function loadStaticImageRecognition(folderNum) {
+	CV_folder_num = folderNum
+	STATUS = document.getElementById("aiStatus");
+	imagePreviewContainer = document.getElementById(
+		"imagePreviewContainer"
+	);
+	class1Button = document.getElementById("labelClass1");
+	class2Button = document.getElementById("labelClass2");
+	resetImgLabel = document.getElementById("resetImgLabel")
+
+	CLASS_NAMES.push(player.interactionAsset.CV_data_label[0]);
+	CLASS_NAMES.push(player.interactionAsset.CV_data_label[1]);
+
+	updateImage();
+
+	class1Button.addEventListener("click", (e) =>{
+		handleLabelClick(0)
+		e.target.blur()
+	});
+	class2Button.addEventListener("click", (e) =>{
+		handleLabelClick(1)
+		e.target.blur()
+	});
+	resetImgLabel.addEventListener("click", (e) =>{
+		resetStaticImageRecognition()
+		e.target.blur()
+	})
+
+	loadImageModel(CLASS_NAMES.length);
+}
+
+function resetStaticImageRecognition(){
+	currentImageIndex=1
+	reset()
+	class1Button.style.display = "block"
+	class2Button.style.display = "block"
+	TRAIN_BUTTON.style.display = "none"
+	nextVideoButton.style.display = "none"
+	currentVideoIndex = 0
+	updateImage()
+}
+
+function updateImage() {
+	imagePreviewContainer.innerHTML = "";
+	static_img = document.createElement("img");
+	static_img.src = `./CV-data/${CV_folder_num}/train/image${currentImageIndex}.jpg`;
+	imagePreviewContainer.appendChild(static_img);
+}
+
+function playVideo() {
+    // 清空 container 的內容
+    imagePreviewContainer.innerHTML = "";
+
+    // 建立 VIDEO 元素
+    VIDEO = document.createElement("video");
+    VIDEO.id = "videoPreview";
+    VIDEO.src = `./CV-data/${CV_folder_num}/valid/${CLASS_NAMES[0]}.mp4`;
+    VIDEO.controls = true; // 添加控制功能
+    VIDEO.autoplay = true; // 自動播放
+	imagePreviewContainer.appendChild(VIDEO);
+
+    // 建立切換按鈕
+    nextVideoButton = document.getElementById("nextVideoButton")
+	nextVideoButton.style.display = "block"
+
+    // 添加按鈕點擊事件，切換影片
+    nextVideoButton.addEventListener("click", () => {
+        currentVideoIndex++;
+        if (currentVideoIndex >= CLASS_NAMES.length) {
+            currentVideoIndex = 0; // 如果超出範圍，循環播放
+        }
+        VIDEO.src = `./CV-data/${CV_folder_num}/valid/${CLASS_NAMES[currentVideoIndex]}.mp4`;
+        VIDEO.play(); // 切換後自動播放
+    });
+}
+
+function handleLabelClick(label_num) {
+	let imageFeatures = tf.tidy(function () {
+		let staticIMGFrameAsTensor = tf.browser.fromPixels(static_img);
+		let resizedTensorFrame = tf.image.resizeBilinear(
+			staticIMGFrameAsTensor,
+			[MOBILE_NET_INPUT_HEIGHT, MOBILE_NET_INPUT_WIDTH],
+			true
+		);
+		let normalizedTensorFrame = resizedTensorFrame.div(255);
+		return mobilenet.predict(normalizedTensorFrame.expandDims()).squeeze();
+	});
+
+	trainingDataInputs.push(imageFeatures);
+	trainingDataOutputs.push(label_num);
+	// Intialize array index element if currently undefined.
+	if (examplesCount[label_num] === undefined) {
+		examplesCount[label_num] = 0;
+	}
+	examplesCount[label_num]++;
+
+	// 刷新 aistatus
+	STATUS.innerText = "";
+	for (let n = 0; n < CLASS_NAMES.length; n++) {
+		if (examplesCount[n] === undefined) {
+			STATUS.innerText += CLASS_NAMES[n] + " 資料數量: " + 0 + ".\n";
+		} else {
+			STATUS.innerText +=
+				CLASS_NAMES[n] + " 資料數量: " + examplesCount[n] + ".\n";
+		}
+	}
+
+	if (currentImageIndex < totalImages) {
+		currentImageIndex++;
+		updateImage();
+	} else {
+		STATUS.innerText = "已標記完所有圖片🎉"
+
+		class1Button.style.display = "none"
+		class2Button.style.display = "none"
+
+		TRAIN_BUTTON = document.getElementById("train");
+		TRAIN_BUTTON.style.display="block"
+		TRAIN_BUTTON.addEventListener("click", (e) => {
+			playVideo()
+			TRAIN_BUTTON.style.display="none"
+			trainAndPredict();
+			e.target.blur();
+		});
+	}
+}
+
 
 function new_data_button() {
 	addButton.addEventListener("click", () => {
@@ -110,11 +250,12 @@ function toggleCam() {
 function enableCam() {
 	if (hasGetUserMedia()) {
 		// getUsermedia parameters.
-		const constraints = {
-			video: true,
-			width: 640,
-			height: 480,
-		};
+        const constraints = {
+            video: {
+                width: 640,
+                height: 480,
+            }, // 確保 `video` 的屬性在此指定
+        };
 		// Activate the webcam stream.
 		navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
 			VIDEO.srcObject = stream;
@@ -163,6 +304,7 @@ async function trainAndPredict() {
 
 function predictLoop() {
 	if (predict) {
+		if (VIDEO.readyState >= 2) { // readyState 2 表示已加載足夠的數據
 		tf.tidy(function () {
 			let videoFrameAsTensor = tf.browser.fromPixels(VIDEO).div(255);
 			let resizedTensorFrame = tf.image.resizeBilinear(
@@ -183,6 +325,7 @@ function predictLoop() {
 				Math.floor(predictionArray[highestIndex] * 100) +
 				"% 信心";
 		});
+	}
 
 		window.requestAnimationFrame(predictLoop);
 	}
@@ -274,7 +417,7 @@ async function loadMobileNetFeatureModel() {
 	});
 }
 
-function loadImageModel() {
+function loadImageModel(model_length) {
 	STATUS.innerText = "等待 AI 預模型載入...";
 
 	// Call the function immediately to start loading.
@@ -284,9 +427,7 @@ function loadImageModel() {
 	model.add(
 		tf.layers.dense({ inputShape: [1024], units: 128, activation: "relu" })
 	);
-	model.add(
-		tf.layers.dense({ units: CLASS_NAMES.length, activation: "softmax" })
-	);
+	model.add(tf.layers.dense({ units: model_length, activation: "softmax" }));
 
 	model.summary();
 
@@ -296,10 +437,7 @@ function loadImageModel() {
 		optimizer: "adam",
 		// Use the correct loss function. If 2 classes of data, must use binaryCrossentropy.
 		// Else categoricalCrossentropy is used if more than 2 classes.
-		loss:
-			CLASS_NAMES.length === 2
-				? "binaryCrossentropy"
-				: "categoricalCrossentropy",
+		loss: model_length === 2 ? "binaryCrossentropy" : "categoricalCrossentropy",
 		// As this is a classification problem you can record accuracy in the logs too!
 		metrics: ["accuracy"],
 	});
