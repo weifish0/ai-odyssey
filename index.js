@@ -389,6 +389,9 @@ window.addEventListener('keydown', (e) => {
 
         if(dialogueIndex===player.interactionAsset.AI_panel_index){
           start_AI_panel(player.interactionAsset.AI_panel_type)
+        }else{
+          // 圖片展示
+          start_AI_panel(0)
         }
         
         if (dialogueIndex <= dialogue.length - 1) {
@@ -415,6 +418,9 @@ window.addEventListener('keydown', (e) => {
       player.isInteracting = true
 
       start_conversation(player.interactionAsset)
+      
+      // 圖片展示
+      start_AI_panel(0)
       break
     case 'w':
       keys.w.pressed = true

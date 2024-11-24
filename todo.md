@@ -1,12 +1,14 @@
 # AI Odyssey Product RoadMap
 - [ ]影像辨識遊戲DEMO
-    - [X]仿造Teachable Machine
+    - [x]仿造Teachable Machine
     - [ ]遊戲對話文字動畫
-    - [ ]遊戲對話圖片輔助
+    - [x]遊戲對話圖片輔助
     - [ ]遊戲對話影片輔助
-    - [ ]AI訓練button
+    - [x]AI訓練button
+    - [ ]新增角色
+    - [ ]修改地圖
     - [ ]遊戲劇情設計
-    - [X]AI操作面板
+    - [x]AI操作面板
     - [ ]指定圖片訓練(小卷,中卷 垃圾分類)
 
 - [ ]portfolio成就系統-從解決遊戲問題到解決現實生活問題

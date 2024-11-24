@@ -27,6 +27,10 @@ const characters_data = {
       '我聽說有一種技術叫做影像辨識，能夠幫助我們分辨出不同的物體。',
       '你聽過影像辨識嗎？它可以透過分析影像，幫助我們識別特定的物體。',
       '如果你想了解更多，去找村裡的村長，他研究過影像辨識技術！'
+    ],
+    conversation_img_data: [
+      './conversation_img_data/1.png',
+      './other/logo.png'
     ]
   }),
   oldman: (position)=>({

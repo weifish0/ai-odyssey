@@ -1,3 +1,5 @@
+
+
 function exit_conversation(aiPanelType) {
 	document.querySelector("#characterDialogueBox").style.display = "none";
 	document.querySelector("#npcImageContainer").style.display = "none";
@@ -22,6 +24,17 @@ function start_AI_panel(aiPanelType) {
 	aiPanelContainer.innerHTML = "";
 
 	switch (aiPanelType) {
+		case 0: //示意圖
+            console.log(player.interactionAsset.conversation_img_data)
+			const currentImage = player.interactionAsset.conversation_img_data[player.interactionAsset.dialogueIndex] || "";
+			aiPanelContainer.innerHTML = `
+        <div id="image-panel">
+            <img src="${currentImage}" alt="示意圖" id="conversation-image">
+            <p id="image-caption">示意圖</p>
+        </div>
+    `;
+    break;
+
 		case 1: // 影像辨識
 			aiPanelContainer.innerHTML = `
 <div id="recognition-panel">
@@ -29,7 +42,7 @@ function start_AI_panel(aiPanelType) {
 	<div id="dataCollector-container"></div>
 	<div id="addCollector-container">
 		<input type="text" id="addInput" placeholder="輸入資料名稱">
-		<button id="addButton">新增資料蒐集按鈕</button>
+		<button id="addButton">新增標籤</button>
 	</div>
 </div>
 <div id="recognition-controls">
@@ -37,12 +50,12 @@ function start_AI_panel(aiPanelType) {
 	<button id="enableCam">啟用攝影機</button>
 	<button id="train">開始訓練!</button>
 </div>
-<p id="aiStatus">載入預訓練模型，開啟你的AI影像辨識奇幻之旅吧🧚‍♀️</p>
+<p id="aiStatus">選擇標籤後，載入預訓練模型，開啟你的AI影像辨識奇幻之旅吧🧚‍♀️</p>
             `;
 			loadImageRecognition(); // 初始化影像辨識功能
 			break;
 
-		case 2: // 圖像生成
+		case 2: // 影像辨識自選圖片
 			aiPanelContainer.innerHTML = `
                 <div id="image-generation-panel">
                     <textarea id="imagePrompt" placeholder="輸入圖像生成的提示..."></textarea>
@@ -52,7 +65,17 @@ function start_AI_panel(aiPanelType) {
             `;
 			break;
 
-		case 3: // 音樂生成
+		case 3: // 圖像生成
+			aiPanelContainer.innerHTML = `
+                <div id="image-generation-panel">
+                    <textarea id="imagePrompt" placeholder="輸入圖像生成的提示..."></textarea>
+                    <button id="generateImage">生成圖像</button>
+                    <div id="imagePreview"></div>
+                </div>
+            `;
+			break;
+
+		case 4: // 音樂生成
 			aiPanelContainer.innerHTML = `
                 <div id="music-generation-panel">
                     <textarea id="musicPrompt" placeholder="輸入音樂生成的提示..."></textarea>
