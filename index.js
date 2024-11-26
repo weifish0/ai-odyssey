@@ -409,7 +409,7 @@ window.addEventListener('keydown', (e) => {
   switch (e.key) {
     case ' ':
       if (!player.interactionAsset) return
-
+    
       // beginning the conversation
       const firstMessage = player.interactionAsset.dialogue[0]
       typeText(firstMessage, "dialogueContent")

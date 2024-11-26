@@ -36,3 +36,23 @@
 .control-btn:active {
 	background-color: #bbb;
 }
+
+#circleButton {
+    position: fixed;
+    bottom: 8%; /* 距離底部 20px */
+    right: 2%; /* 距離右側 20px */
+    width: 60px; /* 按鈕直徑 */
+    height: 60px;
+    background-color: #df5539; /* 按鈕顏色 */
+    border-radius: 50%; /* 讓按鈕變成圓形 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 按鈕陰影 */
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* 保持在畫面頂層 */
+}
+
+#circleButton:active {
+    background-color: #f14623; /* 按下時改變顏色 */
+}
