@@ -2,7 +2,7 @@ function loadFooter(callback) {
     const footerHTML = `
       <footer>
           <div class="footerBottom">
-              <img src="../../img/logo.png" alt="Logo">
+              <img src="./img/logo.png" alt="Logo">
               <div class="companyText">
                   <p class="copyright">Copyright © Will Cheng. All Rights Reserved.</p>
               </div>

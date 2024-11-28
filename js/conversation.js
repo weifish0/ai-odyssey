@@ -82,7 +82,7 @@ function start_AI_panel(aiPanelType) {
 			const currentImage =
 				player.interactionAsset.conversation_img_data[
 					player.interactionAsset.dialogueIndex
-				] || "../other/poster.png";
+				] || "./other/poster.png";
 
 			if (currentImage.startsWith("https://")) {
 				// 如果是 YouTube 影片，刷新為 iframe
