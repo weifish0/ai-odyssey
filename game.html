@@ -10,6 +10,13 @@
   <link rel="stylesheet" href="styles/gamepad.css">
   <link rel="stylesheet" href="styles/aipanel.css">
   <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+  <script>
+    console.log(window.location.hostname)
+    const isLocal = window.location.hostname === "127.0.0.1";
+    const baseHref = isLocal ? "/" : "/ai-odyssey/";
+    document.write(`<base href="${baseHref}">`);
+    console.log(baseHref)
+  </script>
 </head>
 
 <body>

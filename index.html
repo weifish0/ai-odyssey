@@ -11,6 +11,13 @@
     <link rel="icon" href="./img/favicon.ico">
     <script src="./js/home/nav.js"></script>
     <script src="./js/home/footer.js"></script>
+    <script>
+        console.log(window.location.hostname)
+        const isLocal = window.location.hostname === "127.0.0.1";
+        const baseHref = isLocal ? "/" : "/ai-odyssey/";
+        document.write(`<base href="${baseHref}">`);
+        console.log(baseHref)
+    </script>
 </head>
 
 <body>
