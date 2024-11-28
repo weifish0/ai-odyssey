@@ -1,17 +1,17 @@
 const villagerImg = new Image()
-villagerImg.src = '../img/villager/idle.png'
+villagerImg.src = './img/villager/idle.png'
 
 const oldManImg = new Image()
-oldManImg.src = '../img/oldMan/idle.png'
+oldManImg.src = './img/oldMan/idle.png'
 
 const wizardImg = new Image()
-wizardImg.src = '../img/wizard/idle.png'
+wizardImg.src = './img/wizard/idle.png'
 
 const assassinImg = new Image()
-assassinImg.src = '../img/assassin/idle.png'
+assassinImg.src = './img/assassin/idle.png'
 
 const knightImg = new Image()
-knightImg.src = '../img/knight/idle.png'
+knightImg.src = './img/knight/idle.png'
 
 const characters_data = {
   villager1: (position)=>({
