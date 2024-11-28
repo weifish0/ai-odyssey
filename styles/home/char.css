@@ -345,3 +345,13 @@
 	padding-left: 90px;
 	cursor: default;
 }
+
+.sdgsIcon {
+    position: absolute;
+    width: 10vw; /* 調整大小 */
+    height: auto; /* 調整大小 */
+    left: 30%;
+    top: 13%;
+    z-index: 10;
+    border-radius: 10%; /* 圓角設置 */
+}
