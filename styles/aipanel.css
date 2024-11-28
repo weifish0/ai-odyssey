@@ -1,13 +1,13 @@
 #aiPanelContainer {
 	position: absolute;
-	top: 5%; /* 根據需要調整 */
+	top: 3%; /* 根據需要調整 */
 	left: 65%;
 	transform: translateX(-50%);
 	background: rgba(240, 240, 240, 0.9); /* 半透明背景 */
 	border: 2px solid #ddd;
 	padding: 10px;
 	max-width: 60vw;
-    min-width: 30vw;
+    min-width: 35vw;
 	z-index: 2;
 	display: none; /* 默認隱藏 */
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -144,11 +144,13 @@
     height: auto;
     border: 2px solid #ccc;
     border-radius: 8px; /* 圓角樣式，可選 */
+	max-height: 50vh;
 }
 
 #imagePreviewContainer video {
     width: 50vw;
     height: auto;
+	max-height: 50vh;
     border: 2px solid #ccc;
     border-radius: 8px; /* 圓角樣式，可選 */
 }

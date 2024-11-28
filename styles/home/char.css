@@ -92,34 +92,13 @@
 	display: block;
 }
 
-.charList li .villager {
+.charList li .charImg {
 	display: block;
 	position: absolute;
 	top: 0;
 	left: 40%;
 	height: 100vh;
-	min-height: 800px;
-	object-fit: cover;
-}
-
-.charList li .assassin {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	height: 100vh;
-	transform:  scale(1.5);
-	min-height: 800px;
-	object-fit: cover;
-}
-
-.charList li .wizard {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 40%;
-	height: 100vh;
-	transform:  scale(2.2);
+	transform:  scale(1);
 	min-height: 800px;
 	object-fit: cover;
 }

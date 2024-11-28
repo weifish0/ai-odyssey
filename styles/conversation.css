@@ -1,9 +1,10 @@
 #npcImageContainer {
 	position: absolute;
 	display: none;
-	bottom: calc(100vh - 700px); /* 調整位置，使其在對話框上方 */
+	bottom: 20vh; /* 調整位置，使其在對話框上方 */
 	left: 10%;
 	width: 200px; /* 設置圖片大小 */
+	min-width: 20vw;
 	align-items: center;
 	gap: 15px; /* 圖片和文字的間距 */
 }
@@ -38,7 +39,7 @@
 
 #characterDialogueBox {
 	background-color: var(--tan-brown);
-	height: calc(100vh - 576px);
+	height: 25vh;
 	position: absolute;
 	bottom: 0;
 	left: 0;
