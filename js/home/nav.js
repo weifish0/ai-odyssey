@@ -9,7 +9,7 @@ function loadNavbar(callback) {
               <div class="navMark"></div>
               <div class="items">
                   <a href="./index.html" class="active">首頁</a>
-                  <a href="./html/news.html">Blog</a>
+                  <a href="./blog.html">Blog</a>
               </div>
           </div>
           <div class="flexRow playBox">
