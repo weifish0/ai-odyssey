@@ -1,0 +1,104 @@
+/* Title Box: 大標題與副標題的容器 */
+.titleBox {
+    position: absolute;
+    top: 30%; /* 與頂部的距離，可根據需要調整 */
+    width: 100%; /* 讓文字居中對齊 */
+    text-align: center;
+    color: white; /* 白色文字 */
+    z-index: 2; /* 確保文字在最前面 */
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8); /* 添加文字陰影增強可讀性 */
+}
+
+/* 大標題 (遊戲名稱) */
+.gameTitle {
+    font-size: 84px; /* 字體大小，根據需要調整 */
+    font-weight: bold; /* 加粗字體 */
+    margin: 0;
+    padding: 0;
+    line-height: 1.2; /* 行高 */
+    text-transform: uppercase; /* 全部大寫 */
+}
+
+/* 副標題 */
+.gameSubtitle {
+    font-size: 32px; /* 副標題字體大小 */
+    font-weight: normal; /* 正常字重 */
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.poster {
+    position: relative;
+}
+
+.poster img {
+    width: 100%;
+    height: 100vh;
+    display: block;
+    object-fit: cover;
+}
+
+.posterBox {
+    width: 100%;
+    position: absolute;
+    bottom: 3%;
+}
+
+.playButtonBorder {
+    width: 100%;
+    height: 76px;
+    background: url("../../img/home/poster/playButtonBorder.png") no-repeat center center;
+    position: relative;
+}
+
+.playButton {
+    width: 48px;
+    height: 48px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 調整元素的偏移 */
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 0;
+    background-color: white;
+}
+
+.playButton::before {
+    content: "";
+    width: 28px;
+    height: 28px;
+    background-image: url("../../img/home/poster/playButton.png");
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.playButton:hover {
+    background-color: transparent;
+}
+
+/* 在hover時更改before裡的元素 */
+.playButton:hover::before {
+    background-position: 0px -28px;
+}
+
+.deviceArea {
+    margin-top: 2%;
+    justify-content: center;
+}
+
+.deviceArea .QRcode {
+    width: 200px;
+    height: 200px;
+    margin: 0 -10px 0 5px;
+    background: url("../../img/home/qrcode.png");
+    background-size: contain; /* 確保整個圖片縮放到容器內 */
+    background-position: center; /* 將圖片居中顯示 */
+    background-repeat: no-repeat; /* 防止背景重複 */
+    transform: scale(0.7);
+}

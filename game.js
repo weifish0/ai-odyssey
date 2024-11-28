@@ -31,8 +31,8 @@ for (let i = 0; i < charactersMapData.length; i += 70) {
 
 const boundaries = []
 const offset = {
-  x: -735,
-  y: -650
+  x: 40,
+  y: -250
 }
 
 collisionsMap.forEach((row, i) => {
@@ -86,6 +86,24 @@ charactersMap.forEach((row, i) => {
         new Character(new Character(characters_data.oldman(position)))
       );
     }
+    // 1024 === wizard
+    else if (symbol === 1024) {
+      characters.push(
+        new Character(new Character(characters_data.wizard(position)))
+      );
+    }
+    // 1025 === knight
+    else if (symbol === 1025) {
+      characters.push(
+        new Character(new Character(characters_data.knight(position)))
+      );
+    }
+    // 1027 === assassin
+    else if (symbol === 1027) {
+      characters.push(
+        new Character(new Character(characters_data.assassin(position)))
+      );
+    }
 
     if (symbol !== 0) {
       boundaries.push(
@@ -101,22 +119,22 @@ charactersMap.forEach((row, i) => {
 })
 
 const image = new Image()
-image.src = './img/Pellet Town.png'
+image.src = './img/test.png'
 
 const foregroundImage = new Image()
 foregroundImage.src = './img/foregroundObjects.png'
 
 const playerDownImage = new Image()
-playerDownImage.src = './img/playerDown.png'
+playerDownImage.src = './img/initplayer/playerDown.png'
 
 const playerUpImage = new Image()
-playerUpImage.src = './img/playerUp.png'
+playerUpImage.src = './img/initplayer/playerUp.png'
 
 const playerLeftImage = new Image()
-playerLeftImage.src = './img/playerLeft.png'
+playerLeftImage.src = './img/initplayer/playerLeft.png'
 
 const playerRightImage = new Image()
-playerRightImage.src = './img/playerRight.png'
+playerRightImage.src = './img/initplayer/playerRight.png'
 
 const player = new Sprite({
   position: {
@@ -409,7 +427,7 @@ window.addEventListener('keydown', (e) => {
   switch (e.key) {
     case ' ':
       if (!player.interactionAsset) return
-    
+
       // beginning the conversation
       const firstMessage = player.interactionAsset.dialogue[0]
       typeText(firstMessage, "dialogueContent")

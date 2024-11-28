@@ -1,0 +1,347 @@
+.start-game-button {
+  position: absolute; /* 絕對定位 */
+  bottom: 7%;
+  left: 82%;
+  background-color: #ffcc00; /* 黃色底 */
+  color: #000; /* 黑色字 */
+  font-size: 32px; /* 字體大小 */
+  padding: 15px 30px; /* 按鈕內部的間距 */
+  border: none; /* 無邊框 */
+  border-radius: 10px; /* 圓角 */
+  cursor: pointer; /* 鼠標效果 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 按鈕陰影 */
+  transition: transform 0.2s, box-shadow 0.2s; /* 動畫效果 */
+  z-index: 999;
+}
+
+.start-game-button:hover {
+  transform: scale(1.05); /* 當鼠標懸停時，按鈕變大 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* 加強陰影 */
+}
+
+.start-game-button:active {
+  transform: scale(0.95); /* 按下按鈕時縮小 */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* 減少陰影 */
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	min-height: 700px;
+	overflow: hidden;
+}
+
+/* city */
+
+.city1 {
+	width: 100%;
+	height: 100vh;
+	min-height: 700px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url("../../img/char/city1/bg_blur.png") no-repeat center/cover;
+	opacity: 0;
+}
+
+.city2 {
+	width: 100%;
+	height: 100vh;
+	min-height: 700px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url("../../img/char/city2/bg_blur.png") no-repeat center/cover;
+	opacity: 0;
+}
+
+.city3 {
+	width: 100%;
+	height: 100vh;
+	min-height: 700px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url("../../img/char/city3/bg_blur.png") no-repeat center/cover;
+	opacity: 0;
+}
+
+.cityBgActive {
+	opacity: 1;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------- */
+/* |                                                    cityinner                                                          | */
+/* ------------------------------------------------------------------------------------------------------------------------- */
+
+.charList {
+	position: relative;
+	z-index: 1;
+	list-style-type: none;
+}
+
+.charList li {
+	position: relative;
+	left: 22%;
+	padding-top: 10%;
+	display: none;
+}
+
+.charList .charActive {
+	display: block;
+}
+
+.charList li .villager {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 40%;
+	height: 100vh;
+	min-height: 800px;
+	object-fit: cover;
+}
+
+.charList li .assassin {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	height: 100vh;
+	transform:  scale(1.5);
+	min-height: 800px;
+	object-fit: cover;
+}
+
+.charList li .wizard {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 40%;
+	height: 100vh;
+	transform:  scale(2.2);
+	min-height: 800px;
+	object-fit: cover;
+}
+.charList li .musicSoul {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 40%;
+	height: 100vh;
+	transform:  scale(1.3);
+	min-height: 800px;
+	object-fit: cover;
+}
+.charList li .gptMan {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 40%;
+	height: 100vh;
+	transform:  scale(1.3);
+	min-height: 800px;
+	object-fit: cover;
+}
+
+.charList li .charText {
+	position: relative;
+}
+
+.charList li .charText .charName {
+	width: 370px;
+	height: 100px;
+	margin-top: 20px;
+	font-size: 70px;
+	color: white;
+	text-align: left;
+	cursor: default;
+}
+
+.charList li .charText .charCV {
+	width: 420px;
+	height: 54px;
+	margin-bottom: 15px;
+	line-height: 54px;
+	font-size: 27px;
+	font-weight: bold;
+	color: #24333c;
+	background: #cca574 url("../../img/char/CV_bg.jpg") no-repeat;
+	background-position: left top;
+	background-size: 54px;
+	text-align: center;
+	cursor: default;
+}
+
+.charList li .charText .charIntro {
+	width: 550px;
+	padding: 15px 15px 15px 15px;
+	background-color: rgba(1, 1, 1, 0.5);
+	font-size: 16px;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	line-height: 25px;
+	position: relative;
+	cursor: default;
+}
+
+.charList li .charText .charIntro .introBg {
+	width: 20px;
+	height: 20px;
+	margin-top: 4px;
+	margin-right: 24px;
+}
+
+.charSelect {
+	width: 100%;
+	height: 190px;
+	position: absolute;
+	z-index: 998;
+	bottom: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.charSelect .charLeftBtn {
+	width: 45px;
+	height: 64px;
+	margin-right: 15px;
+	cursor: pointer;
+}
+
+.charSelect .charRightBtn {
+	width: 45px;
+	height: 64px;
+	transform: rotate(180deg);
+	margin-left: 15px;
+	cursor: pointer;
+}
+
+.charSelect .charSelectBox {
+	width: 760px;
+	height: 150px;
+	overflow: hidden;
+}
+
+.charSelect .charSelectBox .charSelectList {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+}
+
+.charSelect .charSelectBox .charSelectList li {
+	flex-shrink: 0;
+	margin-right: 20px;
+}
+
+.charSelect .charSelectBox .charSelectList .charCard {
+	display: inline-block;
+	box-sizing: border-box;
+	border: 2px solid transparent;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.charSelect .charSelectBox .charSelectList .charCard:hover {
+	border: 2px solid white;
+	background-color: white;
+	color: black;
+}
+
+.charSelect .charSelectBox .charSelectList .CardActive {
+	border: 2px solid white;
+	background-color: white;
+	color: black;
+}
+
+.charSelect .charSelectBox .charSelectList .charCard img {
+	display: block;
+	box-sizing: border-box;
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 106px;
+	height: 106px;
+	border-radius: 4px 4px 0 0;
+	-webkit-user-drag: none;
+}
+
+.charSelect .charSelectBox .charSelectList .charCard p {
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 0px 0px 4px 4px;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------- */
+/* |                                                    citycommon                                                         | */
+/* ------------------------------------------------------------------------------------------------------------------------- */
+
+.backgroundBox {
+	height: 100vh;
+	min-height: 700px;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.blackBox {
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	left: 20%;
+	transform: skew(45deg);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.whiteBox {
+	position: absolute;
+	bottom: 0;
+	z-index: 2;
+	width: 100%;
+	height: 190px;
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.citiesLine {
+	content: "";
+	display: block;
+	width: 2px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 37px;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.cities {
+	width: 250px;
+	height: 100%;
+	position: absolute;
+	z-index: 998;
+	top: 0;
+	padding-top: 160px;
+	list-style: none;
+	color: white;
+	font-size: 20px;
+}
+
+.cities li {
+	width: 100%;
+	height: 54px;
+	line-height: 54px;
+	background: url("../../img/char/li_img.png") no-repeat;
+	background-position: 18px 50%;
+	background-size: 40px;
+	padding-left: 70px;
+	cursor: pointer;
+}
+
+.cities .cityActive {
+	background: url("../../img/char/li_active.png") no-repeat;
+	background-position: 0px 50%;
+	padding-left: 90px;
+	cursor: default;
+}
