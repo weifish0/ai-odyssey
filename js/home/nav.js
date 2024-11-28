@@ -15,11 +15,11 @@ function loadNavbar(callback) {
           <div class="flexRow playBox">
               <div class="flexRow loginButton">
                   <span>登入</span>
-                  <img src="../img/home/nav/login.png" alt="Login" class="loginImg">
+                  <img src="../../img/home/nav/login.png" alt="Login" class="loginImg">
               </div>
           </div>
           <div class="login">
-              <img src="../img/home/nav/loginCancle.png" alt="Cancel" class="loginCancle">
+              <img src="../../img/home/nav/loginCancle.png" alt="Cancel" class="loginCancle">
               <p>帳號登入</p>
               <input type="text" placeholder="使用者名稱/電子信箱">
               <input type="password" placeholder="密碼">
@@ -33,9 +33,9 @@ function loadNavbar(callback) {
                   <p>更多登入方式</p>
               </div>
               <div class="loginIcon">
-                  <img src="../img/home/nav/googleIcon.png" alt="Google">
-                  <img src="../img/home/nav/iosIcon.png" alt="iOS">
-                  <img src="../img/home/nav/fbIcon.png" alt="Facebook">
+                  <img src="../../img/home/nav/googleIcon.png" alt="Google">
+                  <img src="../../img/home/nav/iosIcon.png" alt="iOS">
+                  <img src="../../img/home/nav/fbIcon.png" alt="Facebook">
               </div>
           </div>
       </nav>

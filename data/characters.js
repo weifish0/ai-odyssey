@@ -1,8 +1,8 @@
 const villagerImg = new Image()
-villagerImg.src = './img/villager/Idle.png'
+villagerImg.src = '../img/villager/idle.png'
 
 const oldManImg = new Image()
-oldManImg.src = './img/oldMan/Idle.png'
+oldManImg.src = '../img/oldMan/idle.png'
 
 const wizardImg = new Image()
 wizardImg.src = '../img/wizard/idle.png'
