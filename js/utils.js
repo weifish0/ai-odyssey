@@ -101,8 +101,8 @@ function setupGamePadListeners(isComputer) {
 
 // 設置 canvas 的初始比例為 16:9，並根據螢幕寬度自動調整
 function resizeCanvas() {
-	const width = window.innerWidth;
-	const height = window.innerHeight;
+	const width = window.innerWidth - 100;
+	const height = window.innerHeight - 100;
 	const aspectRatio = 16 / 9;
 
 	if (width / height > aspectRatio) {
