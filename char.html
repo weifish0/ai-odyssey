@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="./styles/home/footer.css">
     <link rel="stylesheet" href="./styles/home/char.css">
     <link rel="icon" href="./img/favicon.ico">
+    <script src="./js/language.js"></script>
+    <script src="./js/home/nav.js"></script>
+    <script src="./js/home/footer.js"></script>
     <script src="./js/home/char.js" defer></script>
 </head>
 
@@ -19,22 +22,22 @@
                 <li class="charActive">
                     <img src="./img/villager/villager_style.png" alt="pic" class="charImg">
                     <div class="charText">
-                        <p class="charName">阿勇</p>
-                        <div class="charCV">光影啟蒙：解析影像奧秘</div>
+                        <p class="charName" data-text="char.ayong.name">阿勇</p>
+                        <div class="charCV" data-text="char.ayong.title">光影啟蒙：解析影像奧秘</div>
                         <div class="charIntro">
                             <img src="./img/char/intro_bg.png" alt="pic" id="introBg">
-                            阿勇是一名充滿好奇心的年輕學徒，剛開始接觸影像辨識技術。他需要玩家幫忙整理一本《影像辨識基礎手冊》，以便教導村莊居民如何辨識常見物件。
+                            <span data-text="char.ayong.description">阿勇是一名充滿好奇心的年輕學徒，剛開始接觸影像辨識技術。他需要玩家幫忙整理一本《影像辨識基礎手冊》，以便教導村莊居民如何辨識常見物件。</span>
                         </div>
                     </div>
                 </li>
                 <li>
                     <img src="./img/oldMan/oldMan_style.png" alt="pic" class="charImg">
                     <div class="charText">
-                        <p class="charName">村長</p>
-                        <div class="charCV">謎影解密：揭開失落的線索</div>
+                        <p class="charName" data-text="char.village_chief.name">村長</p>
+                        <div class="charCV" data-text="char.village_chief.title">謎影解密：揭開失落的線索</div>
                         <div class="charIntro">
                             <img src="./img/char/intro_bg.png" alt="pic" class="introBg">
-                            村莊內的儲藏室裡最近出現了一些奇怪的物件，村長無法辨識它們的來源。他請求玩家協助使用影像辨識技術來找出這些物件的用途與背後的秘密。
+                            <span data-text="char.village_chief.description">村莊內的儲藏室裡最近出現了一些奇怪的物件，村長無法辨識它們的來源。他請求玩家協助使用影像辨識技術來找出這些物件的用途與背後的秘密。</span>
                         </div>
                     </div>
                 </li>
@@ -42,11 +45,11 @@
                     <img src="./img/level_sign/interdiscipline.png" alt="SDGs" class="sdgsIcon">
                     <img src="./img/assassin/assassin_style.png" alt="pic" class="charImg">
                     <div class="charText">
-                        <p class="charName">獨影</p>
-                        <div class="charCV">葉脈之謎：草藥師的隱秘挑戰</div>
+                        <p class="charName" data-text="char.duying.name">獨影</p>
+                        <div class="charCV" data-text="char.duying.title">葉脈之謎：草藥師的隱秘挑戰</div>
                         <div class="charIntro">
                             <img src="./img/char/intro_bg.png" alt="pic" class="introBg">
-                            作為村莊中的神秘守護者，獨影需要準備一批草藥來治療村莊的病人。然而，單葉與複葉的區分對他來說是一個難題。他請求玩家使用影像辨識技術幫助他快速分辨植物，讓他能在最短時間內完成草藥的準備。
+                            <span data-text="char.duying.description">作為村莊中的神秘守護者，獨影需要準備一批草藥來治療村莊的病人。然而，單葉與複葉的區分對他來說是一個難題。他請求玩家使用影像辨識技術幫助他快速分辨植物，讓他能在最短時間內完成草藥的準備。</span>
                         </div>
                     </div>
                 </li>
@@ -54,11 +57,11 @@
                     <img src="./img/level_sign/sdg12.png" alt="SDGs" class="sdgsIcon">
                     <img src="./img/knight/knight_style.png" alt="pic" class="charImg">
                     <div class="charText">
-                        <p class="charName">塔斯克</p>
-                        <div class="charCV">環保使命：守護光影的潔淨</div>
+                        <p class="charName" data-text="char.task.name">塔斯克</p>
+                        <div class="charCV" data-text="char.task.title">環保使命：守護光影的潔淨</div>
                         <div class="charIntro">
                             <img src="./img/char/intro_bg.png" alt="pic" class="introBg">
-                            作為村莊的守衛，塔斯克每天都會巡視村莊，卻發現垃圾問題日益嚴重。為了保護村莊的環境，他請玩家幫助他學會如何使用影像辨識技術來快速分類垃圾，並設置更有效的回收系統。
+                            <span data-text="char.task.description">作為村莊的守衛，塔斯克每天都會巡視村莊，卻發現垃圾問題日益嚴重。為了保護村莊的環境，他請玩家幫助他學會如何使用影像辨識技術來快速分類垃圾，並設置更有效的回收系統。</span>
                         </div>
                     </div>
                 </li>
@@ -66,11 +69,11 @@
                     <img src="./img/level_sign/sdg14.png" alt="SDGs" class="sdgsIcon">
                     <img src="./img/wizard/wizard_style.png" alt="pic" class="charImg">
                     <div class="charText">
-                        <p class="charName">洛瑪</p>
-                        <div class="charCV">海味抉擇：烹飪的智慧試煉</div>
+                        <p class="charName" data-text="char.loma.name">洛瑪</p>
+                        <div class="charCV" data-text="char.loma.title">海味抉擇：烹飪的智慧試煉</div>
                         <div class="charIntro">
                             <img src="./img/char/intro_bg.png" alt="pic" class="introBg">
-                            洛瑪法師是一名擅長烹飪的研究者，正在準備一次大型宴會。他需要精準區分魷魚與中卷，因為兩種食材的烹飪方式完全不同。他請求玩家用影像辨識技術來幫助他完成這個困難的挑戰。
+                            <span data-text="char.loma.description">洛瑪法師是一名擅長烹飪的研究者，正在準備一次大型宴會。他需要精準區分魷魚與中卷，因為兩種食材的烹飪方式完全不同。他請求玩家用影像辨識技術來幫助他完成這個困難的挑戰。</span>
                         </div>
                     </div>
                 </li>
@@ -81,23 +84,23 @@
                     <ul class="charSelectList">
                         <li class="charCard CardActive">
                             <img src="./img/char/city1/char1.png" alt="pic">
-                            <p>阿勇</p>
+                            <p data-text="char.ayong.name">阿勇</p>
                         </li>
                         <li class="charCard"> 
                             <img src="./img/char/city1/char2.png" alt="pic">
-                            <p>村長</p>       
+                            <p data-text="char.village_chief.name">村長</p>       
                         </li>
                         <li class="charCard">
                             <img src="./img/char/city1/char3.png" alt="pic">
-                            <p>獨影</p>
+                            <p data-text="char.duying.name">獨影</p>
                         </li>
                         <li class="charCard">
                             <img src="./img/char/city1/char4.png" alt="pic">
-                            <p>塔斯克</p>
+                            <p data-text="char.task.name">塔斯克</p>
                         </li>
                         <li class="charCard">
                             <img src="./img/char/city1/char5.png" alt="pic">
-                            <p>洛瑪</p>
+                            <p data-text="char.loma.name">洛瑪</p>
                         </li>
                     </ul>
                 </div>
@@ -109,11 +112,11 @@
                 <li class="charActive">
                     <img src="./img/musicSoul_style.png" alt="pic" class="musicSoul">
                     <div class="charText">
-                        <p class="charName">薩恩</p>
-                        <div class="charCV">音波之舞：創造心靈樂章</div>
+                        <p class="charName" data-text="char.saen.name">薩恩</p>
+                        <div class="charCV" data-text="char.saen.title">音波之舞：創造心靈樂章</div>
                         <div class="charIntro">
                             <img src="./img/char/intro_bg.png" alt="pic" class="introBg">
-                            薩恩是一位擁有音樂魔法的靈體，能以聲波與旋律激發創作靈感。她發現港口的鐘聲失去了原有的和諧，無法再召喚漁船安全返航。她請求玩家使用音樂生成技術幫助她重新編織鐘聲的旋律，修復韻律之港的音樂之魂。
+                            <span data-text="char.saen.description">薩恩是一位擁有音樂魔法的靈體，能以聲波與旋律激發創作靈感。她發現港口的鐘聲失去了原有的和諧，無法再召喚漁船安全返航。她請求玩家使用音樂生成技術幫助她重新編織鐘聲的旋律，修復韻律之港的音樂之魂。</span>
                         </div>
                     </div>
                 </li>
@@ -125,7 +128,7 @@
                     <ul class="charSelectList">
                         <li class="charCard CardActive">
                             <img src="./img/char/city2/char1.png" alt="pic">
-                            <p>薩恩</p>
+                            <p data-text="char.saen.name">薩恩</p>
                         </li>
                     </ul>
                 </div>
@@ -137,11 +140,11 @@
                 <li class="charActive">
                     <img src="./img/gpt_style.png" alt="pic" class="gptMan">
                     <div class="charText">
-                        <p class="charName">修文</p>
-                        <div class="charCV">詞語密林：語言智慧之試煉</div>
+                        <p class="charName" data-text="char.xiuwen.name">修文</p>
+                        <div class="charCV" data-text="char.xiuwen.title">詞語密林：語言智慧之試煉</div>
                         <div class="charIntro">
                             <img src="./img/char/intro_bg.png" alt="pic" class="introBg">
-                            修文是一位知識淵博的古代學者，負責守護詞境谷地中的語言之書。然而，近期一片詞語密林失去了其原有的結構，詞句顛倒、無法解讀。他需要玩家運用語言模型技術來重建密林的句子邏輯，恢復谷地的語言秩序。
+                            <span data-text="char.xiuwen.description">修文是一位知識淵博的古代學者，負責守護詞境谷地中的語言之書。然而，近期一片詞語密林失去了其原有的結構，詞句顛倒、無法解讀。他需要玩家運用語言模型技術來重建密林的句子邏輯，恢復谷地的語言秩序。</span>
                         </div>
                     </div>
                 </li>  
@@ -153,7 +156,7 @@
                     <ul class="charSelectList">
                         <li class="charCard CardActive">
                             <img src="./img/char/city3/char1.png" alt="pic">
-                            <p>修文</p>
+                            <p data-text="char.xiuwen.name">修文</p>
                         </li>
                     </ul>
                 </div>
@@ -165,14 +168,14 @@
             <div class="whiteBox"></div>
             <div class="citiesLine"></div>
             <ul class="cities">
-                <li class="cityActive">光影灣</li>
-                <li>韻律之港</li>
-                <li>詞境谷地</li>
-                <li class="disabled" style="cursor: default;">敬請期待</li>
+                <li class="cityActive" data-text="city.light_bay">光影灣</li>
+                <li data-text="city.rhythm_port">韻律之港</li>
+                <li data-text="city.word_valley">詞境谷地</li>
+                <li class="disabled" style="cursor: default;" data-text="city.coming_soon">敬請期待</li>
             </ul>
         </div>
     </div>
-    <button class="start-game-button" onclick="startGame()">開始遊戲</button>
+    <button class="start-game-button" onclick="startGame()" data-text="char.start_game">開始遊戲</button>
 </body>
 
 </html>

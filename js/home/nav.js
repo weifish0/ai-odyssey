@@ -13,6 +13,10 @@ function loadNavbar(callback) {
               </div>
           </div>
           <div class="flexRow playBox">
+              <div class="language-selector">
+                  <button data-lang="zh-TW" class="lang-btn">中文</button>
+                  <button data-lang="en" class="lang-btn">English</button>
+              </div>
               <div class="flexRow loginButton">
                   <span>登入</span>
                   <img src="./img/home/nav/login.png" alt="Login" class="loginImg">

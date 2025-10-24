@@ -1,4 +1,5 @@
 function startGame() {
+  sessionStorage.setItem("mapNum", mapNum);
   window.location.href = "./game.html";
 }
 
@@ -7,6 +8,8 @@ function startGame() {
 /* ------------------------------------------------------------------------------------------------------------------------- */
 // 獲取 cityNum，並確保其為有效數字
 let cityNum = parseInt(sessionStorage.getItem("cityNum"));
+let mapNum = 0;
+
 // 如果 cityNum 是 NaN，設定為預設值 0
 if (isNaN(cityNum)) {
   cityNum = 0;
@@ -40,12 +43,15 @@ citiesUl.addEventListener("click", function (e) {
     switch (e.target) {
       case citiesUl.children[0]:
         document.querySelector(".city1").classList.add("cityBgActive");
+        mapNum = 0;
         break;
       case citiesUl.children[1]:
         document.querySelector(".city2").classList.add("cityBgActive");
+        mapNum = 1;
         break;
       case citiesUl.children[2]:
         document.querySelector(".city3").classList.add("cityBgActive");
+        mapNum = 2;
         break;
       default:
         break;

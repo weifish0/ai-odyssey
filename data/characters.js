@@ -19,7 +19,9 @@ const characters_data = {
     image: villagerImg,
     style_image: './img/villager/villager_style.png',
     name: '阿勇',
+    nameKey: 'char.ayong.name',
     description: '對AI十分有興趣的年輕人',
+    descriptionKey: 'char.ayong.description_short',
     AI_panel_index: 10,
     AI_panel_type: 1,
     CV_data_num: 0,
@@ -41,10 +43,15 @@ const characters_data = {
       "分類是人工智慧學習的重要環節。記住了嗎？接下來我們要認識數據和特徵，這是關鍵哦！",
       "接下來，我們需要認識數據和特徵。數據是機器學習的材料，而特徵是能幫助分類的關鍵資訊。影片會幫你理解這些重要概念！",
       "當我們整理好特徵後，就可以進行分類了。這就像給每件東西貼上標籤一樣，超有趣的！快看看影片裡是怎麼做到的！",
-      "你可能會聽說“監督式學習”，其實這就像老師教你如何分辨對與錯。影片裡會告訴你這背後的魔法！",
+      "你可能會聽說「監督式學習」，其實這就像老師教你如何分辨對與錯。影片裡會告訴你這背後的魔法！",
       '恭喜你，學會了影像辨識的基礎知識，現在來訓練一個你自己的影像辨識模型吧!',
       "太棒了！你現在已經是一個具有影像辨識能力的勇者了！擁有了這項技能，就像拿到了一把無敵的武器！",
       "對了，村長最近提到有些神秘的問題，他可能需要你的幫助。趕快去找他看看吧！"
+    ],
+    dialogueKeys: [
+      "dialogue.ayong.1", "dialogue.ayong.2", "dialogue.ayong.3", "dialogue.ayong.4",
+      "dialogue.ayong.5", "dialogue.ayong.6", "dialogue.ayong.7", "dialogue.ayong.8",
+      "dialogue.ayong.9", "dialogue.ayong.10", "dialogue.ayong.11", "dialogue.ayong.12", "dialogue.ayong.13"
     ],
     conversation_img_data: [
       './conversation_img_data/villager/0.png',
@@ -69,7 +76,9 @@ const characters_data = {
       hold: 60
     },
     name: '村長',
+    nameKey: 'char.village_chief.name',
     description: '負責村莊的大小事務',
+    descriptionKey: 'char.village_chief.description_short',
     style_image: './img/oldMan/oldMan_style.png',
     position,  
     scale: 3,
@@ -85,6 +94,10 @@ const characters_data = {
       "幸運的是，我們有了一個強大的工具——右邊的AI魔法工具。你可以用它來幫忙訓練影像辨識模型，學習如何區分狐狸和狼。",
       "太棒了！你的模型成功辨認出了狐狸和狼，這幫助我們大大提高了防範的能力。村民們終於能放心了，真是多虧了你的智慧！",
       "對了，村莊中還有一位叫獨影的刺客。他最近提到他在尋找藥草時遇到了麻煩，或許他需要你的幫助。趕快去找他看看吧！"
+    ],
+    dialogueKeys: [
+      "dialogue.village_chief.1", "dialogue.village_chief.2", "dialogue.village_chief.3",
+      "dialogue.village_chief.4", "dialogue.village_chief.5", "dialogue.village_chief.6"
     ],
     conversation_img_data: [
       './conversation_img_data/oldMan/0.png',
@@ -102,7 +115,9 @@ const characters_data = {
       hold: 60
     },
     name: '洛瑪',
+    nameKey: 'char.loma.name',
     description: '烹飪大師',
+    descriptionKey: 'char.loma.description_short',
     style_image: './img/wizard/wizard_style.png',
     position,
     scale: 3,
@@ -121,6 +136,11 @@ const characters_data = {
       "如果測試結果不夠準確，別擔心！設計思考的最後一步是迭代優化。你可以挑選更多圖片，改進模型，直到達到滿意的結果。",
       "太棒了！你的模型成功幫助漁夫快速分辨小捲和中卷，村莊的宴會也能有序準備了。這對海洋保護意義非凡！",
     ],
+    dialogueKeys: [
+      "dialogue.loma.1", "dialogue.loma.2", "dialogue.loma.3", "dialogue.loma.4",
+      "dialogue.loma.5", "dialogue.loma.6", "dialogue.loma.7", "dialogue.loma.8",
+      "dialogue.loma.9", "dialogue.loma.10"
+    ],
     conversation_img_data: [
       './conversation_img_data/wizard/0.png',
       './conversation_img_data/wizard/1.png',
@@ -134,7 +154,9 @@ const characters_data = {
       hold: 60
     },
     name: '獨影',
+    nameKey: 'char.duying.name',
     description: '盡責的草藥師',
+    descriptionKey: 'char.duying.description_short',
     style_image: './img/assassin/assassin_style.png',
     position,
     scale: 3,
@@ -152,6 +174,10 @@ const characters_data = {
       "現在，我們需要訓練一個AI模型，幫助我們準確地區分單子葉和雙子葉植物。",
       "太棒了！你的模型成功幫助我辨認了植物，這將為我們的藥草配方提供極大的幫助。真是多虧了你！",
       "村莊的村長一定也會為你的能力感到驕傲。現在，我得繼續我的藥草任務，而你還有更多冒險要去探索！"
+    ],
+    dialogueKeys: [
+      "dialogue.duying.1", "dialogue.duying.2", "dialogue.duying.3", "dialogue.duying.4",
+      "dialogue.duying.5", "dialogue.duying.6", "dialogue.duying.7", "dialogue.duying.8"
     ],
     conversation_img_data: [
       './conversation_img_data/assassin/0.png',
@@ -171,7 +197,9 @@ const characters_data = {
       hold: 60
     },
     name: '塔斯克',
+    nameKey: 'char.task.name',
     description: '回收達人',
+    descriptionKey: 'char.task.description_short',
     style_image: './img/knight/knight_style.png',
     position,
     scale: 3,
@@ -190,6 +218,11 @@ const characters_data = {
       "現在是構思方案的時候了！或許我們可以先在生活中找塑膠瓶與紙類，拍照，讓AI學會它們的特徵。",
       "如果結果不夠好，別擔心！設計思考的最後一步是迭代優化。你可以添加更多圖片，幫助AI學習得更好。",
       "太棒了！你的模型成功了！村莊的垃圾分類效率大幅提升，環境也變得更加乾淨！村民們一定會對你感激不盡！",
+    ],
+    dialogueKeys: [
+      "dialogue.task.1", "dialogue.task.2", "dialogue.task.3", "dialogue.task.4",
+      "dialogue.task.5", "dialogue.task.6", "dialogue.task.7", "dialogue.task.8",
+      "dialogue.task.9", "dialogue.task.10", "dialogue.task.11"
     ],
     conversation_img_data: [
     './conversation_img_data/knight/0.png',

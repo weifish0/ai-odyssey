@@ -1,0 +1,1 @@
+const mapNum = parseInt(sessionStorage.getItem("mapNum"));

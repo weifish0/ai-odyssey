@@ -260,7 +260,8 @@ class Character extends Sprite {
     animate = false,
     rotation = 0,
     scale = 1,
-    dialogue = ['']
+    dialogue = [''],
+    dialogueKeys = []
   }) {
     super({
       position,
@@ -280,6 +281,7 @@ class Character extends Sprite {
     this.name = name
     this.description = description
     this.dialogue = dialogue
+    this.dialogueKeys = dialogueKeys
     this.dialogueIndex = 0
     this.conversation_img_data = conversation_img_data
   }

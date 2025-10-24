@@ -138,11 +138,12 @@
 }
 
 .charList li .charText .charCV {
-	width: 420px;
-	height: 54px;
+	width: 500px;
+	height: auto; /* 改為自動高度，適應內容 */
+	min-height: 54px; /* 保持最小高度 */
 	margin-bottom: 15px;
-	line-height: 54px;
-	font-size: 27px;
+	line-height: 1.2; /* 調整行高，讓多行文字更緊湊 */
+	font-size: 20px; /* 減小字體大小 */
 	font-weight: bold;
 	color: #24333c;
 	background: #cca574 url("../../img/char/CV_bg.jpg") no-repeat;
@@ -150,6 +151,12 @@
 	background-size: 54px;
 	text-align: center;
 	cursor: default;
+	/* 優化文字顯示 */
+	padding: 5px 2% 5px 2%; /* 上下左右都有適當的間距 */
+	box-sizing: border-box; /* 包含 padding 在寬度計算中 */
+	display: flex; /* 使用 flexbox 來垂直居中 */
+	align-items: center; /* 垂直居中對齊 */
+	justify-content: center; /* 水平居中對齊 */
 }
 
 .charList li .charText .charIntro {

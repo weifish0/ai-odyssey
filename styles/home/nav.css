@@ -257,6 +257,39 @@ nav {
 
 .playBox {
     margin-left: auto;
+    gap: 20px;
+}
+
+/* 語言選擇器樣式 */
+.language-selector {
+    display: flex;
+    gap: 5px;
+    margin-right: 20px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.lang-btn:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lang-btn.active {
+    opacity: 1;
+    background: rgba(69, 182, 226, 0.3);
+    border-color: rgb(69, 182, 226);
+    text-shadow: 0px 0px 10px rgb(69, 182, 226);
 }
 
 .playBox div {
