@@ -1,3 +1,6 @@
+// 全局變量來追蹤當前的打字動畫
+let currentTypingAnimation = null;
+
 document.getElementById("prevDialogue").addEventListener("click", (e) => {
 	if (player.interactionAsset.dialogueIndex > 0) {
 		player.interactionAsset.dialogueIndex--;
@@ -18,22 +21,64 @@ document.getElementById("nextDialogue").addEventListener("click", (e) => {
 });
 
 function typeText(text, elementId) {
+	// 清除之前的動畫
+	if (currentTypingAnimation) {
+		clearInterval(currentTypingAnimation);
+		currentTypingAnimation = null;
+	}
+	
 	let i = 0;
 	const element = document.getElementById(elementId);
 	element.innerHTML = ""; // 清空之前的內容
 
-	const interval = setInterval(() => {
+	currentTypingAnimation = setInterval(() => {
 		if (i < text.length) {
 			element.innerHTML += text.charAt(i); // 逐字顯示
 			i++;
 		} else {
-			clearInterval(interval); // 結束動畫
+			clearInterval(currentTypingAnimation); // 結束動畫
+			currentTypingAnimation = null;
 		}
 	}, 50); // 每個字的間隔（毫秒）
 }
 
+// 立即完成當前打字動畫的函數
+function completeTypingAnimation() {
+	if (currentTypingAnimation) {
+		clearInterval(currentTypingAnimation);
+		currentTypingAnimation = null;
+		
+		// 立即顯示完整的對話文字
+		const dialogueContent = document.getElementById("dialogueContent");
+		if (dialogueContent && player.interactionAsset) {
+			let dialogue = player.interactionAsset.dialogue[player.interactionAsset.dialogueIndex];
+			
+			// 如果有語言管理器，使用翻譯後的對話
+			if (window.languageManager && player.interactionAsset.dialogueKeys) {
+				const dialogueKey = player.interactionAsset.dialogueKeys[player.interactionAsset.dialogueIndex];
+				if (dialogueKey) {
+					const translatedDialogue = window.languageManager.getText(dialogueKey);
+					if (translatedDialogue && translatedDialogue !== dialogueKey) {
+						dialogue = translatedDialogue;
+					}
+				}
+			}
+			
+			dialogueContent.innerHTML = dialogue;
+		}
+		return true; // 表示有動畫被完成
+	}
+	return false; // 表示沒有動畫在進行
+}
+
 function updateDialogue() {
 	const dialogueContent = document.getElementById("dialogueContent");
+
+	// 清除任何正在進行的打字動畫
+	if (currentTypingAnimation) {
+		clearInterval(currentTypingAnimation);
+		currentTypingAnimation = null;
+	}
 
 	// 獲取當前對話內容
 	let dialogue = player.interactionAsset.dialogue[player.interactionAsset.dialogueIndex];
@@ -236,5 +281,6 @@ function start_AI_panel(aiPanelType) {
 	aiPanelContainer.style.display = "block"; // 顯示懸浮窗
 }
 
-// 將 updateDialogue 函數設為全局可訪問
+// 將函數設為全局可訪問
 window.updateDialogue = updateDialogue;
+window.completeTypingAnimation = completeTypingAnimation;

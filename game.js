@@ -463,6 +463,12 @@ window.addEventListener("keydown", (e) => {
 	if (player.isInteracting) {
 		switch (e.key) {
 			case " ":
+				// 如果當前有打字動畫正在進行，先完成它
+				if (window.completeTypingAnimation) {
+					window.completeTypingAnimation();
+				}
+				
+				// 繼續執行對話邏輯
 				player.interactionAsset.dialogueIndex++;
 				const { dialogueIndex, dialogue } = player.interactionAsset;
 
